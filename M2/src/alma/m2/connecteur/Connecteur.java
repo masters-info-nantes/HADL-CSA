@@ -6,4 +6,8 @@ public abstract class Connecteur implements Element {
 	enum TypeConnecteur {
 		implicite, explicite, enumeree;
 	}
+
+	enum Typologie {
+		publique, prive;
+	}
 }
