@@ -1,4 +1,4 @@
-package alma.m1.connecteur;
+package hadl.m1.connecteur;
 
 import hadl.m2.interfaces.roles.RoleFourni;
 

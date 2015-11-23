@@ -1,4 +1,4 @@
-package alma.m1.client;
+package hadl.m1.client;
 
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 
