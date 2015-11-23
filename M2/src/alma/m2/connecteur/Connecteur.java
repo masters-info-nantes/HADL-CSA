@@ -1,8 +1,11 @@
 package alma.m2.connecteur;
 
-import alma.m2.element.Element;
+import java.util.List;
 
-public abstract class Connecteur implements Element {
+import alma.m2.element.Element;
+import alma.m2.interfaces.InterfaceConnecteur;
+
+public abstract class Connecteur extends Element {
 	enum TypeConnecteur {
 		implicite, explicite, enumeree;
 	}
@@ -10,4 +13,15 @@ public abstract class Connecteur implements Element {
 	enum Typologie {
 		publique, prive;
 	}
+
+	public List<InterfaceConnecteur> listInterfaces;
+
+	public void addInterface(InterfaceConnecteur ie) {
+		listInterfaces.add(ie);
+	}
+
+	public void removeInterface(InterfaceConnecteur ie) {
+		listInterfaces.remove(ie);
+	}
+
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import alma.m2.element.Element;
 import alma.m2.interfaces.InterfaceConfiguration;
 
-public class Configuration implements Element {
+public class Configuration extends Element {
 
 	private List<Element> ListElement;
 	private List<InterfaceConfiguration> listInterfaces;

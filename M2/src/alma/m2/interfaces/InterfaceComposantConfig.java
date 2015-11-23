@@ -1,5 +1,5 @@
 package alma.m2.interfaces;
 
-public abstract class InterfaceComposantConfig implements Interface {
+public abstract class InterfaceComposantConfig extends Interface {
 
 }

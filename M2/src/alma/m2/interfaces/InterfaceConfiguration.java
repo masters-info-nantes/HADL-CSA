@@ -1,5 +1,5 @@
 package alma.m2.interfaces;
 
-public abstract class InterfaceConfiguration implements Interface {
+public abstract class InterfaceConfiguration extends Interface {
 
 }

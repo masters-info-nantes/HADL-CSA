@@ -1,5 +1,5 @@
 package alma.m2.element;
 
-public interface Element {
+public abstract class Element {
 
 }

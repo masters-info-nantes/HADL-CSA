@@ -1,5 +1,6 @@
 package alma.m2.interfaces;
 
-public abstract class InterfaceConnecteur implements Interface {
+
+public abstract class InterfaceConnecteur extends Interface {
 
 }
