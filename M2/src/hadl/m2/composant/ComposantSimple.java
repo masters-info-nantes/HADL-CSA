@@ -5,7 +5,6 @@ import hadl.m2.interfaces.InterfaceComposantSimple;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ComposantSimple extends Composant {
 
 	private List<InterfaceComposantSimple> listInterfaces;

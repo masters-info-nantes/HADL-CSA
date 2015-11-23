@@ -6,7 +6,6 @@ import hadl.m2.interfaces.InterfaceConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Configuration extends Element {
 
 	private List<Element> ListElement;

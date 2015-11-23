@@ -6,7 +6,6 @@ import hadl.m2.element.Element;
 
 import java.util.ArrayList;
 
-
 public abstract class Composant extends Element {
 	ArrayList<Proprietes> propertiesList = new ArrayList<>();
 	ContraintesTechniques ct = new ContraintesTechniques();

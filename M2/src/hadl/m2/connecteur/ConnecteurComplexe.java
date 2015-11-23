@@ -6,7 +6,6 @@ import hadl.m2.interfaces.InterfaceConnecteur;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ConnecteurComplexe extends Connecteur {
 
 	public List<Configuration> listConfiguration;

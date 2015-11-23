@@ -8,4 +8,5 @@ public abstract class ServiceCptConfig extends InterfaceComposantConfig {
 	public String getName() {
 		return name;
 	}
+
 }

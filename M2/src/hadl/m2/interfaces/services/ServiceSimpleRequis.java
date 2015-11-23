@@ -4,7 +4,6 @@ import hadl.m2.interfaces.ports.PortSimpleRequis;
 
 import java.util.List;
 
-
 public class ServiceSimpleRequis extends ServiceSimple {
 	private List<PortSimpleRequis> ports;
 

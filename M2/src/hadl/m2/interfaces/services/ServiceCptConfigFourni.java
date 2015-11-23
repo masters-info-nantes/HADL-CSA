@@ -11,16 +11,17 @@ public class ServiceCptConfigFourni extends ServiceCptConfig {
 		this.name = name;
 	}
 
-	public void addPorts(PortCptConfigFourni pcf) {
+	public void addPort(PortCptConfigFourni pcf) {
 		ports.add(pcf);
 	}
 
-	protected PortCptConfigFourni getPort(String portName) {
-		for (PortCptConfigFourni pccf : ports) {
-			if (pccf.getName().toLowerCase().equals(portName.toLowerCase())) {
-				return pccf;
+	protected PortCptConfigFourni getPort(String portname) {
+		for (PortCptConfigFourni portconf : ports) {
+			if (portconf.getName().toLowerCase().equals(portname.toLowerCase())) {
+				return portconf;
 			}
 		}
+
 		return null;
 	}
 }

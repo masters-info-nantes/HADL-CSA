@@ -5,7 +5,6 @@ import hadl.m2.interfaces.InterfaceConnecteur;
 
 import java.util.List;
 
-
 public abstract class Connecteur extends Element {
 	enum TypeConnecteur {
 		implicite, explicite, enumeree;

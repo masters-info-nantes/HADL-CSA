@@ -8,7 +8,7 @@ public class ServiceEnvoiRequete extends ServiceCptConfigFourni {
 		super(name);
 		PortEnvoiRequete portEnvoiRequete = new PortEnvoiRequete(
 				"PortEnvoiRequete");
-		this.addPorts(portEnvoiRequete);
+		this.addPort(portEnvoiRequete);
 	}
 
 	public void sendMessage(Object message) {
