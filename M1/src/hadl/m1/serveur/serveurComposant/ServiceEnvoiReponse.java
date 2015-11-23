@@ -6,7 +6,11 @@ public class ServiceEnvoiReponse extends ServiceCptConfigFourni {
 
 	public ServiceEnvoiReponse(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
+		this.ports.add(new PortEnvoiReponse("PortEnvoiReponse"));
 	}
 
+	public void post(Object arg) {
+		((PortEnvoiReponse) this.getPort("PortEnvoiReponse")).post(arg);
+	}
 }

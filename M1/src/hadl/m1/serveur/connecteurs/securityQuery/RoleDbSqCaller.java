@@ -4,4 +4,9 @@ import hadl.m2.interfaces.roles.RoleRequis;
 
 public class RoleDbSqCaller extends RoleRequis {
 
+	public RoleDbSqCaller(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
 }

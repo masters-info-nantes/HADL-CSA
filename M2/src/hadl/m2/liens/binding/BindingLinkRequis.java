@@ -4,10 +4,10 @@ import hadl.m2.interfaces.ports.PortConfigRequis;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 
 public class BindingLinkRequis implements Binding {
-	private PortConfigRequis portCfg;
-	private PortCptConfigRequis portCpt;
+	protected PortConfigRequis portCfg;
+	protected PortCptConfigRequis portCpt;
 
-	public BindingLinkRequis(PortConfigRequis pcfg, PortCptConfigRequis pcpt) {
+	public BindingLinkRequis(PortCptConfigRequis pcpt, PortConfigRequis pcfg) {
 		portCfg = pcfg;
 		portCpt = pcpt;
 

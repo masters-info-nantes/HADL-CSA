@@ -5,4 +5,5 @@ public class PortCptConfigRequis extends PortCptConfig {
 	public PortCptConfigRequis(String name) {
 		this.name = name;
 	}
+
 }

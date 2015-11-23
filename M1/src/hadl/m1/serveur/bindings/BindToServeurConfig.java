@@ -1,14 +1,24 @@
 package hadl.m1.serveur.bindings;
 
-import hadl.m2.interfaces.ports.PortConfigRequis;
-import hadl.m2.interfaces.ports.PortCptConfigRequis;
+import hadl.m1.serveur.serveurComposant.PortServeurCptRequis;
+import hadl.m1.serveur.serveurConfiguration.PortServeurConfigRequis;
 import hadl.m2.liens.binding.BindingLinkRequis;
 
-public class BindToServeurConfig extends BindingLinkRequis {
+import java.util.Observable;
+import java.util.Observer;
 
-	public BindToServeurConfig(PortConfigRequis pcfg, PortCptConfigRequis pcpt) {
-		super(pcfg, pcpt);
-		// TODO Auto-generated constructor stub
+public class BindToServeurConfig extends BindingLinkRequis implements Observer {
+
+	public BindToServeurConfig(PortServeurCptRequis portServeurComp,
+			PortServeurConfigRequis portServeurConf) {
+		super(portServeurComp, portServeurConf);
+		this.portCpt.addObserver(this);
 	}
 
+	public void update(Observable o, Object arg) {
+		if (o instanceof PortServeurCptRequis) {
+			this.portCfg.post(arg);
+		}
+
+	}
 }

@@ -2,10 +2,15 @@ package hadl.m2.interfaces.services;
 
 import hadl.m2.interfaces.ports.PortCptConfigFourni;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceCptConfigFourni extends ServiceCptConfig {
-	private List<PortCptConfigFourni> ports;
+	protected List<PortCptConfigFourni> ports;
+
+	public ServiceCptConfigFourni() {
+		this.ports = new ArrayList<PortCptConfigFourni>();
+	}
 
 	public ServiceCptConfigFourni(String name) {
 		this.name = name;

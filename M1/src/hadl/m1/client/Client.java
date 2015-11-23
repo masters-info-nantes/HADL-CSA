@@ -19,7 +19,7 @@ public class Client extends ComposantConfiguration implements Observer {
 
 	}
 
-	public void send(Object message) {
+	public void post(Object message) {
 
 		System.out.println("<- | " + this.getClass().getSimpleName()
 				+ "               | Send to Serveur : " + message);

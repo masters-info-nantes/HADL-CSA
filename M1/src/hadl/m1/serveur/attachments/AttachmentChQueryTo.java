@@ -4,11 +4,18 @@ import hadl.m2.interfaces.ports.PortCptConfigFourni;
 import hadl.m2.interfaces.roles.RoleRequis;
 import hadl.m2.liens.attachment.AttachmentToRole;
 
+import java.util.Observable;
+
 public class AttachmentChQueryTo extends AttachmentToRole {
 
 	public AttachmentChQueryTo(PortCptConfigFourni pcf, RoleRequis rr) {
 		super(pcf, rr);
 		// TODO Auto-generated constructor stub
+	}
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

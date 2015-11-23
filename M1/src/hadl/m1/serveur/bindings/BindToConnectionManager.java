@@ -6,8 +6,9 @@ import hadl.m2.liens.binding.BindingLinkRequis;
 
 public class BindToConnectionManager extends BindingLinkRequis {
 
-	public BindToConnectionManager(PortConfigRequis pcfg, PortCptConfigRequis pcpt) {
-		super(pcfg, pcpt);
+	public BindToConnectionManager(PortConfigRequis pcfg,
+			PortCptConfigRequis pcpt) {
+		super(pcpt, pcfg);
 		// TODO Auto-generated constructor stub
 	}
 

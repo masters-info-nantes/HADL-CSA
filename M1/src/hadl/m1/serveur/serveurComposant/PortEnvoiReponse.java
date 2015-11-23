@@ -6,7 +6,11 @@ public class PortEnvoiReponse extends PortCptConfigFourni {
 
 	public PortEnvoiReponse(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+	}
+
+	public void post(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
 	}
 
 }

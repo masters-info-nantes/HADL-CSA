@@ -9,4 +9,9 @@ public class PortServeurConfigRequis extends PortConfigRequis {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void post(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
+	}
+
 }

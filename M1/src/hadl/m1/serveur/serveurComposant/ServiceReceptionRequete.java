@@ -6,7 +6,7 @@ public class ServiceReceptionRequete extends ServiceCptConfigRequis {
 
 	public ServiceReceptionRequete(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
 	}
 
 }

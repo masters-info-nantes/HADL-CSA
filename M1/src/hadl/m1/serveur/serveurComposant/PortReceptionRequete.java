@@ -6,7 +6,11 @@ public class PortReceptionRequete extends PortCptConfigRequis {
 
 	public PortReceptionRequete(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+	}
+
+	public void get(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
 	}
 
 }

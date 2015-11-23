@@ -1,13 +1,25 @@
 package hadl.m1.attachments;
 
-import hadl.m2.interfaces.ports.PortCptConfigRequis;
-import hadl.m2.interfaces.roles.RoleFourni;
-import hadl.m2.liens.attachment.AttachmentToPort;
+import hadl.m1.client.PortEnvoiRequete;
+import hadl.m1.connecteur.RoleClientRpcCaller;
+import hadl.m1.messages.Query;
+import hadl.m2.liens.attachment.AttachmentToRole;
 
-public class AttachmentEnvoiRequete extends AttachmentToPort {
+import java.util.Observable;
 
-	public AttachmentEnvoiRequete(RoleFourni rf, PortCptConfigRequis pfr) {
-		super(rf, pfr);
+public class AttachmentEnvoiRequete extends AttachmentToRole {
+
+	public AttachmentEnvoiRequete(RoleClientRpcCaller rcrc, PortEnvoiRequete per) {
+		super(per, rcrc);
+		this.port.addObserver(this);
+	}
+
+	public void update(Observable o, Object arg) {
+		if (o instanceof PortEnvoiRequete) {
+			if (arg instanceof Query) {
+				((RoleClientRpcCaller) this.role).get(arg);
+			}
+		}
 
 	}
 

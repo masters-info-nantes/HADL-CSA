@@ -6,7 +6,6 @@ public class ServiceConnectionFrom extends ServiceCptConfigFourni {
 
 	public ServiceConnectionFrom(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 }
