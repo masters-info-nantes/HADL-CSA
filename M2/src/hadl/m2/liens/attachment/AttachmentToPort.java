@@ -19,7 +19,6 @@ public class AttachmentToPort implements Attachment, Observer {
 				+ "-->" + port.getName());
 	}
 
-	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 

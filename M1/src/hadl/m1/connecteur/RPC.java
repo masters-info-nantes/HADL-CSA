@@ -4,4 +4,6 @@ import hadl.m2.connecteur.ConnecteurSimple;
 
 public class RPC extends ConnecteurSimple {
 
+	public RPC() {
+	}
 }
