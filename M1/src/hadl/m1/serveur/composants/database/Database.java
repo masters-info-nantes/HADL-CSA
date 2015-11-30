@@ -20,10 +20,10 @@ public class Database extends ComposantConfiguration implements Observer {
 
         serviceSecurityManagementFrom.addObserver(this);
 
-        addInterface(serviceQueryDatabaseTo);
-        addInterface(serviceQueryDatabaseFrom);
-        addInterface(serviceSecurityManagementFrom);
-        addInterface(serviceSecurityManagementTo);
+        addService(serviceQueryDatabaseTo);
+        addService(serviceQueryDatabaseFrom);
+        addService(serviceSecurityManagementFrom);
+        addService(serviceSecurityManagementTo);
     }
 
     @Override

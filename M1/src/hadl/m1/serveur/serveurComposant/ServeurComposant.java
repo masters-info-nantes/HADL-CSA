@@ -19,10 +19,10 @@ public class ServeurComposant extends ComposantConfiguration implements
 		ServiceConnectionTo serviceConnectionTo = new ServiceConnectionTo(
 				"serviceConnectionTo");
 
-		this.addInterface(serviceReceptionRequete);
-		this.addInterface(serviceEnvoiReponse);
-		this.addInterface(serviceConnectionTo);
-		this.addInterface(serviceConnectionFrom);
+		this.addService(serviceReceptionRequete);
+		this.addService(serviceEnvoiReponse);
+		this.addService(serviceConnectionTo);
+		this.addService(serviceConnectionFrom);
 
 		serviceReceptionRequete.addObserver(this);
 		serviceConnectionFrom.addObserver(this);

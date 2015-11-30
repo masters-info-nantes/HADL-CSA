@@ -1,21 +1,26 @@
 package hadl.m2.composant;
 
 import hadl.m2.interfaces.InterfaceComposantSimple;
-
-import java.util.ArrayList;
-import java.util.List;
+import hadl.m2.interfaces.services.ServiceSimple;
 
 public class ComposantSimple extends Composant {
 
-	private List<InterfaceComposantSimple> listInterfaces;
+	private InterfaceComposantSimple interfaceComposantSimple;
 	private String name;
 
 	public ComposantSimple(String name) {
-		this.listInterfaces = new ArrayList<InterfaceComposantSimple>();
+		interfaceComposantSimple = new InterfaceComposantSimple();
 	}
 
-	public void addListInterfaces(InterfaceComposantSimple ic) {
-		this.listInterfaces.add(ic);
+	public void addService(ServiceSimple ic) {
+		interfaceComposantSimple.addService(ic);
 	}
 
+	public void removeService(ServiceSimple ic) {
+		interfaceComposantSimple.removeService(ic);
+	}
+
+	public String getName() {
+		return name;
+	}
 }
