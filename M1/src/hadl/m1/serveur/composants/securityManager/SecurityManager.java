@@ -20,10 +20,10 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
         serviceChQueryFrom.addObserver(this);
         serviceSecurityAuthorizationFrom.addObserver(this);
 
-        addInterface(serviceChQueryFrom);
-        addInterface(serviceChQueryTo);
-        addInterface(serviceSecurityAuthorizationFrom);
-        addInterface(serviceSecurityAuthorizationTo);
+        addService(serviceChQueryFrom);
+        addService(serviceChQueryTo);
+        addService(serviceSecurityAuthorizationFrom);
+        addService(serviceSecurityAuthorizationTo);
 
 
     }

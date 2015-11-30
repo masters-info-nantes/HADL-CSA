@@ -12,8 +12,8 @@ public class Client extends ComposantConfiguration implements Observer {
 
 		ServiceReceptionReponse serviceReception = new ServiceReceptionReponse(
 				"ServiceReceptionReponse");
-		this.addInterface(serviceReception);
-		this.addInterface(new ServiceEnvoiRequete("ServiceEnvoiRequete"));
+		this.addService(serviceReception);
+		this.addService(new ServiceEnvoiRequete("ServiceEnvoiRequete"));
 
 		serviceReception.addObserver(this);
 

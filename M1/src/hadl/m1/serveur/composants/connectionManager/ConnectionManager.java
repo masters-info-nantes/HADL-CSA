@@ -35,14 +35,14 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
         serviceDatabaseQueryFrom = new ServiceDatabaseQueryFrom("serviceDatabaseQueryFrom");
         serviceDatabaseQueryTo = new ServiceDatabaseQueryTo("serviceDatabaseQueryTo");
 
-        addInterface(serviceExternalSocketToService);
-        addInterface(serviceExternalSocketFromService);
+        addService(serviceExternalSocketToService);
+        addService(serviceExternalSocketFromService);
 
-        addInterface(serviceSecurityCheckFrom);
-        addInterface(serviceExternalSocketToService);
+        addService(serviceSecurityCheckFrom);
+        addService(serviceExternalSocketToService);
 
-        addInterface(serviceDatabaseQueryTo);
-        addInterface(serviceDatabaseQueryFrom);
+        addService(serviceDatabaseQueryTo);
+        addService(serviceDatabaseQueryFrom);
 
 
         serviceDatabaseQueryFrom.addObserver(this);

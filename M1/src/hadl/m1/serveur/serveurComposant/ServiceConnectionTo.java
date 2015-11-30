@@ -10,11 +10,16 @@ public class ServiceConnectionTo extends ServiceCptConfigRequis implements Obser
 
 	public ServiceConnectionTo(String name) {
 		super(name);
+
 		this.ports.add(new PortCptConfigRequis("PortServeurConfigRequis"));
 	}
 
     @Override
     public void update(Observable o, Object arg) {
+		ports.add(new PortCptConfigRequis("PortCptConfigRequis"));
+	}
+
+
 
     }
 }
