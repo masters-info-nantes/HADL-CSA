@@ -4,7 +4,9 @@ import hadl.m2.interfaces.services.ServiceCptConfigFourni;
 
 public class ServiceSecurityAuthorizationTo extends ServiceCptConfigFourni {
 
-    protected ServiceSecurityAuthorizationTo(String name) {
+
+	public ServiceSecurityAuthorizationTo(String name) {
+
 		super(name);
 		PortSecurityAuthorizationTo portSecurityAuthorizationTo = new PortSecurityAuthorizationTo("portSecurityAuthorizationTo");
 		addPort(portSecurityAuthorizationTo);

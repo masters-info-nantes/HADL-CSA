@@ -1,10 +1,10 @@
 package hadl.m2.connecteur;
 
-import hadl.m2.configuration.Configuration;
-import hadl.m2.interfaces.InterfaceConnecteur;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import hadl.m2.configuration.Configuration;
+import hadl.m2.interfaces.InterfaceConnecteur;
 
 public class ConnecteurComplexe extends Connecteur {
 
@@ -13,8 +13,8 @@ public class ConnecteurComplexe extends Connecteur {
 	public ConnecteurComplexe() {
 		super();
 
-		this.listInterfaces = new ArrayList<InterfaceConnecteur>();
-		this.listConfiguration = new ArrayList<Configuration>();
+		interfaceConnecteur = new InterfaceConnecteur();
+		listConfiguration = new ArrayList<Configuration>();
 	}
 
 	public void addConfiguration(Configuration c) {

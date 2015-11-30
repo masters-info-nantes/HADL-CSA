@@ -19,10 +19,10 @@ public class RPC extends ConnecteurSimple {
 		this.roleServerRpcCaller = new RoleServerRpcCaller(
 				"roleServerRpcCaller");
 
-		this.addInterface(roleClientRpcCalled);
-		this.addInterface(roleClientRpcCaller);
-		this.addInterface(roleServerRpcCalled);
-		this.addInterface(roleServerRpcCaller);
+		this.addRole(roleClientRpcCalled);
+		this.addRole(roleClientRpcCaller);
+		this.addRole(roleServerRpcCalled);
+		this.addRole(roleServerRpcCaller);
 	}
 
 	public void glue() {
