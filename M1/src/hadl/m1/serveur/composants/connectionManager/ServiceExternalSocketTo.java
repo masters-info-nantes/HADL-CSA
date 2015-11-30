@@ -7,15 +7,14 @@ public class ServiceExternalSocketTo extends ServiceCptConfigFourni {
 
 	public ServiceExternalSocketTo(String name) {
 		super(name);
-		;
+
 		portExternalSocketTo = new PortExternalSocketTo("portExternalSocketTo");
-
+        addPort(portExternalSocketTo);
 	}
 
-	public PortExternalSocketTo getPort() {
-		return portExternalSocketTo;
-
-	}
+    public void setResponse(Object arg) {
+        ((PortExternalSocketTo)getPort("portExternalSocketTo")).sendResponse(arg);
+    }
 
 
 }

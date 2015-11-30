@@ -10,6 +10,7 @@ public class PortServeurFourni extends PortConfigFourni {
 	}
 
 	public void sendResponse(Object arg) {
-
+        setChanged();
+        notifyObservers(arg);
 	}
 }

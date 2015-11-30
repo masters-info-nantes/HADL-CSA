@@ -13,14 +13,14 @@ public class BindToConnectionManager extends BindingLinkRequis  implements Obser
                                    PortExternalSocketFrom pesf) {
         super(pesf, psr);
 
-        pesf.addObserver(this);
+        portConfigRequis.addObserver(this);
 		// TODO Auto-generated constructor stub
 	}
 
     @Override
     public void update(Observable o, Object arg) {
-        if(o instanceof  PortExternalSocketFrom) {
-            ((PortServeurRequis) portConfigRequis).sendResponse(arg);
+        if(o instanceof  PortServeurRequis) {
+            ((PortExternalSocketFrom) portCptConfigRequis).sendRequest(arg);
         }
     }
 

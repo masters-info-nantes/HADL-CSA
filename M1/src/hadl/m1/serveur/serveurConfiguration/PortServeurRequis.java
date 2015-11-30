@@ -10,7 +10,7 @@ public class PortServeurRequis extends PortConfigRequis {
 	}
 
 
-    public void sendResponse(Object arg) {
+    public void sendRequest(Object arg) {
         setChanged();
         notifyObservers(arg);
     }
