@@ -6,4 +6,7 @@ public class PortCptConfigRequis extends PortCptConfig {
 		this.name = name;
 	}
 
+    public void post(Object arg) {
+
+    }
 }

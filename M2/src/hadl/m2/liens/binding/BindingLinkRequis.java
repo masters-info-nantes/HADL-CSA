@@ -4,14 +4,14 @@ import hadl.m2.interfaces.ports.PortConfigRequis;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 
 public class BindingLinkRequis implements Binding {
-	protected PortConfigRequis portCfg;
-	protected PortCptConfigRequis portCpt;
+	protected PortConfigRequis portConfigRequis;
+	protected PortCptConfigRequis portCptConfigRequis;
 
-	public BindingLinkRequis(PortCptConfigRequis pcpt, PortConfigRequis pcfg) {
-		portCfg = pcfg;
-		portCpt = pcpt;
+	public BindingLinkRequis(PortCptConfigRequis portCptConfigRequis, PortConfigRequis portConfigRequis) {
+		this.portConfigRequis = portConfigRequis;
+		this.portCptConfigRequis = portCptConfigRequis;
 
-		System.out.println("Binding link created :" + portCfg.getName()
-				+ "<-->" + portCpt.getName());
+		System.out.println("Binding link created :" + portConfigRequis.getName()
+				+ "<-->" + portCptConfigRequis.getName());
 	}
 }
