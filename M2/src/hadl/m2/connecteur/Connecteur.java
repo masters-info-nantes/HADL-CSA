@@ -2,8 +2,7 @@ package hadl.m2.connecteur;
 
 import hadl.m2.element.Element;
 import hadl.m2.interfaces.InterfaceConnecteur;
-
-import java.util.List;
+import hadl.m2.interfaces.roles.Role;
 
 public abstract class Connecteur extends Element {
 	enum TypeConnecteur {
@@ -14,14 +13,20 @@ public abstract class Connecteur extends Element {
 		publique, prive;
 	}
 
-	public List<InterfaceConnecteur> listInterfaces;
+	protected String name;
 
-	public void addInterface(InterfaceConnecteur ie) {
-		listInterfaces.add(ie);
+	public InterfaceConnecteur interfaceConnecteur;
+
+	public void addRole(Role ie) {
+		interfaceConnecteur.add(ie);
 	}
 
-	public void removeInterface(InterfaceConnecteur ie) {
-		listInterfaces.remove(ie);
+	public void removeRole(Role ie) {
+		interfaceConnecteur.remove(ie);
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }
