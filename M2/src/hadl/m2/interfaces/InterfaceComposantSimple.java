@@ -3,20 +3,19 @@ package hadl.m2.interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.sampled.Port;
-
+import hadl.m2.interfaces.ports.PortSimple;
 import hadl.m2.interfaces.services.ServiceSimple;
 
 public class InterfaceComposantSimple extends Interface {
 
 	private String name;
 	private List<ServiceSimple> services;
-	private List<Port> ports;
+	private List<PortSimple> ports;
 
 	public InterfaceComposantSimple() {
 		super();
 		services = new ArrayList<ServiceSimple>();
-		ports = new ArrayList<Port>();
+		ports = new ArrayList<PortSimple>();
 	}
 
 	public void addService(ServiceSimple service) {
@@ -29,6 +28,10 @@ public class InterfaceComposantSimple extends Interface {
 
 	public List<ServiceSimple> getServices() {
 		return services;
+	}
+
+	public List<PortSimple> getPorts() {
+		return ports;
 	}
 
 	public String getName() {

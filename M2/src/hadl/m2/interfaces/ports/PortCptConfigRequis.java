@@ -6,15 +6,9 @@ public class PortCptConfigRequis extends PortCptConfig {
 		this.name = name;
 	}
 
-<<<<<<< HEAD
-    public void post(Object arg) {
-
-    }
-=======
 	public void post(Object arg) {
 		// TODO Auto-generated method stub
 
 	}
 
->>>>>>> 8da5c115464dffcdb05d2c23dbac3543f08a908b
 }

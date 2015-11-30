@@ -3,23 +3,27 @@ package hadl.m2.interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.sampled.Port;
+import hadl.m2.interfaces.ports.PortConfiguration;
 
-public abstract class InterfaceConfiguration extends Interface {
+public class InterfaceConfiguration extends Interface {
 	private String name;
-	private List<Port> ports;
+	private List<PortConfiguration> ports;
 
 	public InterfaceConfiguration() {
 		super();
-		ports = new ArrayList<Port>();
+		ports = new ArrayList<PortConfiguration>();
 	}
 
-	public void addPort(Port port) {
+	public void addPort(PortConfiguration port) {
 		ports.add(port);
 	}
 
-	public void removePort(Port port) {
+	public void removePort(PortConfiguration port) {
 		ports.remove(port);
+	}
+
+	public List<PortConfiguration> getPorts() {
+		return ports;
 	}
 
 	public String getName() {

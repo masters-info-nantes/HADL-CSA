@@ -29,6 +29,10 @@ public class InterfaceComposantConfig extends Interface {
 		return services;
 	}
 
+	public List<PortCptConfig> getPorts() {
+		return ports;
+	}
+
 	public String getName() {
 
 		return name;
