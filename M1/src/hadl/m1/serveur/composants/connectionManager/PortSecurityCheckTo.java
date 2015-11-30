@@ -6,7 +6,13 @@ public class PortSecurityCheckTo extends PortCptConfigFourni {
 
 	public PortSecurityCheckTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
 	}
+
+	public void sendRequete(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
+	}
+
 
 }

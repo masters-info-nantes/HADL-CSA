@@ -6,7 +6,12 @@ public class PortExternalSocketTo extends PortCptConfigFourni {
 
 	public PortExternalSocketTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
 	}
 
+
+    public void sendRequete(Object arg) {
+        this.setChanged();
+        this.notifyObservers(arg);
+    }
 }

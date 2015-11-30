@@ -8,7 +8,6 @@ public class BindToServeurCpt extends BindingLinkFourni {
 
 	public BindToServeurCpt(PortConfigFourni pcfg, PortCptConfigFourni pcpt) {
 		super(pcfg, pcpt);
-		// TODO Auto-generated constructor stub
 	}
 
 }

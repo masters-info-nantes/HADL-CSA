@@ -27,4 +27,13 @@ public class Configuration extends Element {
 		listInterfaces.add(ic);
 	}
 
+	public InterfaceConfiguration getInterface(String s) {
+
+		for (InterfaceConfiguration ic: listInterfaces) {
+			if(ic.getName().toLowerCase().equals(s.toLowerCase())){
+				return ic;
+			}
+		}
+		return null;
+	}
 }

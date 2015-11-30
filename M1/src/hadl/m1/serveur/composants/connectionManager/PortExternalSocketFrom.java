@@ -6,7 +6,10 @@ public class PortExternalSocketFrom extends PortCptConfigRequis {
 
 	public PortExternalSocketFrom(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void send(Object arg) {
+			this.setChanged();
+			this.notifyObservers(arg);
+	}
 }

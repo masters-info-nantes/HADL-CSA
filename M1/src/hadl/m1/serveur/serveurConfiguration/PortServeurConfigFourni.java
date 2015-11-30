@@ -9,4 +9,7 @@ public class PortServeurConfigFourni extends PortConfigFourni {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void send(Object arg) {
+
+	}
 }

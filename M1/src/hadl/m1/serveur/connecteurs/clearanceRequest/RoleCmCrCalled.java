@@ -12,7 +12,8 @@ public class RoleCmCrCalled extends RoleFourni {
 	}
 
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		if (o instanceof  RoleCmCrCalled) {
+        }
 
 	}
 
