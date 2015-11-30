@@ -6,7 +6,11 @@ public class PortServeurCptFourni extends PortCptConfigFourni {
 
 	public PortServeurCptFourni(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
 	}
 
+    public void sendRequest(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

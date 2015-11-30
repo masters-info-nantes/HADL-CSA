@@ -8,7 +8,7 @@ public class PortReceptionRequete extends PortCptConfigRequis {
 		super(name);
 	}
 
-	public void get(Object arg) {
+	public void getRequete(Object arg) {
 		this.setChanged();
 		this.notifyObservers(arg);
 	}

@@ -88,12 +88,14 @@ public class ServeurConfiguration extends Configuration implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+            //attention la requete du client passe par le port fourni a cause du fournie-fournie de binding
+            if(o instanceof PortServeurConfigFourni ) {
 
-            if(o instanceof PortServeurConfigRequis ) {
-                ((PortServeurConfigFourni)getInterface("portServeurConfigFourni")).sendResponse(arg);
 
-            }else if(o instanceof PortServeurRequis) {
-                ((PortServeurFourni)getInterface("portServeurFournie")).sendResponse(arg);
+            }else if(o instanceof PortServeurRequis) { // on reçois une réponse des composants serveur
+                // on utilise l'autre lien requis-requis (meme si ça va a l'encontre du port)
+                ((PortServeurConfigRequis) getInterface("portServeurConfigRequis")).sendResponse(arg);
+
             }
     }
 

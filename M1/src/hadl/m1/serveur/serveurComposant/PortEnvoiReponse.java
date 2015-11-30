@@ -8,9 +8,9 @@ public class PortEnvoiReponse extends PortCptConfigFourni {
 		super(name);
 	}
 
-	public void post(Object arg) {
-		this.setChanged();
-		this.notifyObservers(arg);
-	}
 
+    public void sendReponse(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

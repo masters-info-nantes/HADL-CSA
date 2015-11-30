@@ -6,4 +6,8 @@ public class PortConfigFourni extends PortConfiguration {
 		this.name = name;
 	}
 
+    public void sendRequest(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

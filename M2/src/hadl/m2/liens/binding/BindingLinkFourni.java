@@ -5,14 +5,14 @@ import hadl.m2.interfaces.ports.PortCptConfigFourni;
 
 public class BindingLinkFourni implements Binding {
 
-	private PortConfigFourni portCfg;
-	private PortCptConfigFourni portCpt;
+	protected PortConfigFourni portConfigFourni;
+	protected PortCptConfigFourni portCptConfigFourni;
 
 	public BindingLinkFourni(PortConfigFourni pcfg, PortCptConfigFourni pcpt) {
-		portCfg = pcfg;
-		portCpt = pcpt;
+		portConfigFourni = pcfg;
+		portCptConfigFourni = pcpt;
 
-		System.out.println("Binding link created :" + portCfg.getName()
-				+ "<-->" + portCpt.getName());
+		System.out.println("Binding link created :" + portCptConfigFourni.getName()
+				+ "<-->" + portConfigFourni.getName());
 	}
 }

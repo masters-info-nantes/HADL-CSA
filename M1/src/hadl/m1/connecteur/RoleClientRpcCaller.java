@@ -6,10 +6,10 @@ public class RoleClientRpcCaller extends RoleRequis {
 
 	public RoleClientRpcCaller(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public void get(Object arg) {
+	public void getRequete(Object arg) {
 		this.setChanged();
 		this.notifyObservers(arg);
 	}

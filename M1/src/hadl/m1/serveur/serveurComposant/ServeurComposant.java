@@ -30,15 +30,13 @@ public class ServeurComposant extends ComposantConfiguration implements
 	}
 
 	public void update(Observable o, Object arg) {
-		if (o instanceof ServiceReceptionRequete) {
-			ServiceEnvoiReponse serviceEnvoiReponse = (ServiceEnvoiReponse) this
-					.getInterfaceElement("ServiceEnvoiReponse");
-			serviceEnvoiReponse.post(arg);
 
-		} else if (o instanceof ServiceConnectionFrom) {
-			ServiceConnectionTo serviceConnectionTo = (ServiceConnectionTo) this
-					.getInterfaceElement("ServiceConnectionTo");
-			serviceConnectionTo.post(arg);
+		if (o instanceof ServiceReceptionRequete) {
+
+            ((ServiceConnectionFrom)getInterfaceElement("ServiceConnectionFrom")).sendRequest(arg);
+
+		} else if (o instanceof ServiceConnectionTo) {
+            ((ServiceEnvoiReponse)getInterfaceElement("ServiceEnvoiReponse")).sendResponse(arg);
 		}
 
 	}

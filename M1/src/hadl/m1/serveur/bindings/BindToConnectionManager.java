@@ -20,7 +20,7 @@ public class BindToConnectionManager extends BindingLinkRequis  implements Obser
     @Override
     public void update(Observable o, Object arg) {
         if(o instanceof  PortExternalSocketFrom) {
-            ((PortServeurRequis) portConfigRequis).sendRequest(arg);
+            ((PortServeurRequis) portConfigRequis).sendResponse(arg);
         }
     }
 

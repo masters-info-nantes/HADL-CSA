@@ -9,9 +9,9 @@ public class RoleServerRpcCaller extends RoleRequis {
 
 	}
 
-	public void get(Object arg) {
-		this.setChanged();
-		this.notifyObservers(arg);
-	}
 
+    public void getResponse(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

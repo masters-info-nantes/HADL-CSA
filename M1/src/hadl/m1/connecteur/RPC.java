@@ -23,6 +23,8 @@ public class RPC extends ConnecteurSimple {
 		this.addRole(roleClientRpcCaller);
 		this.addRole(roleServerRpcCalled);
 		this.addRole(roleServerRpcCaller);
+
+        this.glue();
 	}
 
 	public void glue() {
@@ -34,4 +36,5 @@ public class RPC extends ConnecteurSimple {
 		this.roleServerRpcCaller.addObserver(this.roleClientRpcCalled);
 
 	}
+
 }

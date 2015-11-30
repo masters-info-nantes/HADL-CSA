@@ -4,7 +4,9 @@ import java.util.Observable;
 
 public abstract class Interface extends Observable {
 
-	enum Mode {
+
+
+    enum Mode {
 		SYNCHRONE, ASYNCHRONE, CONTINUE;
 	}
 
