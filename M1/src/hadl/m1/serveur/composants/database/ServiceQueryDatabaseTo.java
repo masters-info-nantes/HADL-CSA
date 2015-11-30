@@ -6,7 +6,8 @@ public class ServiceQueryDatabaseTo extends ServiceCptConfigFourni {
 
 	public ServiceQueryDatabaseTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+        PortQueryDatabaseTo portQueryDatabaseTo = new PortQueryDatabaseTo("portQueryDatabaseTo");
+        addPort(portQueryDatabaseTo);
 	}
 
 }

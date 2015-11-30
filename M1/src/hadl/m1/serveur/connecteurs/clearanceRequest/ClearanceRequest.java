@@ -4,4 +4,5 @@ import hadl.m2.connecteur.ConnecteurSimple;
 
 public class ClearanceRequest extends ConnecteurSimple {
 
+
 }

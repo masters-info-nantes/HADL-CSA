@@ -6,7 +6,8 @@ public class ServiceSecurityManagementTo extends ServiceCptConfigFourni {
 
 	public ServiceSecurityManagementTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+        PortSecurityManagementTo portSecurityManagementTo = new PortSecurityManagementTo("portSecurityManagementTo");
+        addPort(portSecurityManagementTo);
 	}
 
 }

@@ -6,7 +6,8 @@ public class ServiceChQueryTo extends ServiceCptConfigFourni {
 
 	public ServiceChQueryTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+		PortChQueryTo portChQueryTo = new PortChQueryTo("portChQueryTo");;
+		addPort(portChQueryTo);
 	}
 
 }

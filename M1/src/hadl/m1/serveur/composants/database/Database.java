@@ -2,11 +2,32 @@ package hadl.m1.serveur.composants.database;
 
 import hadl.m2.composant.ComposantConfiguration;
 
-public class Database extends ComposantConfiguration {
+import java.util.Observable;
+import java.util.Observer;
 
-	public Database(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
+public class Database extends ComposantConfiguration implements Observer {
 
+    public Database(String name) {
+        super(name);
+
+        ServiceQueryDatabaseFrom serviceQueryDatabaseFrom = new ServiceQueryDatabaseFrom("serviceQueryDatabaseFrom");
+        ServiceQueryDatabaseTo serviceQueryDatabaseTo = new ServiceQueryDatabaseTo("serviceQueryDatabaseTo");
+
+        serviceQueryDatabaseFrom.addObserver(this);
+
+        ServiceSecurityManagementFrom serviceSecurityManagementFrom = new ServiceSecurityManagementFrom("serviceSecurityManagementFrom");
+        ServiceSecurityManagementTo serviceSecurityManagementTo = new ServiceSecurityManagementTo("serviceSecurityManagementTo");
+
+        serviceSecurityManagementFrom.addObserver(this);
+
+        addInterface(serviceQueryDatabaseTo);
+        addInterface(serviceQueryDatabaseFrom);
+        addInterface(serviceSecurityManagementFrom);
+        addInterface(serviceSecurityManagementTo);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }
