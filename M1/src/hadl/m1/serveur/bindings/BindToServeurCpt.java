@@ -12,13 +12,14 @@ public class BindToServeurCpt extends BindingLinkRequis implements Observer {
 
 	public BindToServeurCpt(PortConfigRequis pcfg, PortCptConfigRequis pcpt) {
 		super(pcpt, pcfg);
+		
         this.portConfigRequis.addObserver(this);
 	}
 
     @Override
     public void update(Observable o, Object arg) {
         if(o instanceof PortServeurConfigRequis) {
-            portCptConfigRequis.sendResponse(arg);
+        	((PortServeurConfigRequis) portConfigRequis).sendResponse(arg);
         }
     }
 }

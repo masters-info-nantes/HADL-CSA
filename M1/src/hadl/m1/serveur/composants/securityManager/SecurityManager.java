@@ -16,7 +16,6 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
         ServiceChQueryFrom serviceChQueryFrom = new ServiceChQueryFrom("serviceChQueryFrom");
         ServiceChQueryTo serviceChQueryTo = new ServiceChQueryTo("serviceChQueryTo");
 
-
         serviceChQueryFrom.addObserver(this);
         serviceSecurityAuthorizationFrom.addObserver(this);
 
@@ -24,8 +23,6 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
         addService(serviceChQueryTo);
         addService(serviceSecurityAuthorizationFrom);
         addService(serviceSecurityAuthorizationTo);
-
-
     }
     
     @Override

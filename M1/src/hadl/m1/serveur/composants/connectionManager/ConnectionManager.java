@@ -3,6 +3,7 @@ package hadl.m1.serveur.composants.connectionManager;
 import java.util.Observable;
 import java.util.Observer;
 
+import hadl.m1.messages.*;
 import hadl.m2.composant.ComposantConfiguration;
 
 public class ConnectionManager extends ComposantConfiguration implements Observer {
@@ -46,12 +47,41 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof ServiceExternalSocketFrom) {
-			// serviceExternalSocketTo.getPort().sendRequete(arg);
+			System.out.println(this.getClass().getSimpleName() + " : Reception from Serveur");
+			if(arg instanceof Query){
+				sendRequest(arg);
+			}else if(arg instanceof Response){
+				sendResponse(arg);
+			}
 		} else if (o instanceof ServiceSecurityCheckFrom) {
-			// serviceSecurityCheckTo.getPort().sendRequete(arg);
+			System.out.println(this.getClass().getSimpleName() + " : Reception from Security Manager");
+			if(arg instanceof Response){
+				sendResponse(arg);
+			}else if(arg instanceof Query){
+				sendRequest(arg);
+			}
 		} else if (o instanceof ServiceDatabaseQueryFrom) {
-			// serviceDatabaseQueryTo.getPort().sendRequete(arg);
+			System.out.println(this.getClass().getSimpleName() + " : Reception from Database");
+			if(arg instanceof Response){
+				sendResponse(arg);
+			}else if(arg instanceof Query){
+				sendRequest(arg);
+			}
 		}
+	}
+	
+	public void sendRequest(Object query){
+		if(((Query)query).getHeader().equals("authentification")){
+			serviceSecurityCheckTo.sendToClearanceRequest(query);
+		}else if(((Query)query).getHeader().equals("requeteBDD")){
+			serviceDatabaseQueryTo.sendToSqlQuery(query);
+		}else{
+			System.out.println("(ConnectionManager) sendRequest : Type de requête inconnu.");
+		}
+	}
+	
+	public void sendResponse(Object resp){
+		serviceExternalSocketTo.sendToServeur(resp);
 	}
 
 	//// TODO: 30/11/15 METHODE THE CONTROLE manager

@@ -10,16 +10,16 @@ import java.util.Observable;
 
 public class AttachmentSecurityCheckFrom extends AttachmentToPort {
 
-	public AttachmentSecurityCheckFrom(RoleCmCrCalled rf, PortSecurityCheckFrom pfr) {
+	public AttachmentSecurityCheckFrom(RoleFourni rf, PortCptConfigRequis pfr) {
 		super(rf, pfr);
+		
 		rf.addObserver(this);
 	}
 
-
     @Override
     public void update(Observable o, Object arg) {
-        if(o instanceof RoleFourni ) {
-            ((PortSecurityCheckFrom) this.port).sendResponse(arg);
+        if(o instanceof RoleCmCrCalled) {
+            ((PortSecurityCheckFrom) this.port).sendToConnectionManager(arg);
         }
     }
 }

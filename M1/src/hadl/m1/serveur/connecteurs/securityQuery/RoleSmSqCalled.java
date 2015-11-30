@@ -3,17 +3,20 @@ package hadl.m1.serveur.connecteurs.securityQuery;
 import hadl.m2.interfaces.roles.RoleFourni;
 
 import java.util.Observable;
+import java.util.Observer;
 
-public class RoleSmSqCalled extends RoleFourni {
+public class RoleSmSqCalled extends RoleFourni implements Observer {
 
 	public RoleSmSqCalled(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
+		
+		if (o instanceof RoleDbSqCaller) {
+            setChanged();
+            notifyObservers(arg);
+        }
 	}
 
 }

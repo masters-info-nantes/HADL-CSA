@@ -6,7 +6,10 @@ public class RoleSmSqCaller extends RoleRequis {
 
 	public RoleSmSqCaller(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void receiveFromSecurityManager(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

@@ -6,11 +6,9 @@ public class PortExternalSocketTo extends PortCptConfigFourni {
 
 	public PortExternalSocketTo(String name) {
 		super(name);
-
 	}
 
-
-    public void sendResponse(Object arg) {
+    public void sendToServeur(Object arg) {
         this.setChanged();
         this.notifyObservers(arg);
     }

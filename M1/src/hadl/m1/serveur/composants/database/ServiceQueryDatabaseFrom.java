@@ -17,5 +17,9 @@ public class ServiceQueryDatabaseFrom extends ServiceCptConfigRequis implements 
     @Override
     public void update(Observable o, Object arg) {
 
+    	if( o instanceof PortQueryDatabaseFrom) {
+            setChanged();
+            notifyObservers();
+        }
     }
 }

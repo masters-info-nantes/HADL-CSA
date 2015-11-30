@@ -9,14 +9,14 @@ import java.util.Observer;
 
 public class BindToServeurConfig extends BindingLinkFourni implements Observer {
 
-	public BindToServeurConfig(PortServeurCptFourni portServeurComp,
-                                  PortServeurConfigFourni portServeurConf) {
+	public BindToServeurConfig(PortServeurCptFourni portServeurComp, PortServeurConfigFourni portServeurConf) {
 
 		super(portServeurConf, portServeurComp);
 		this.portCptConfigFourni.addObserver(this);
 	}
 
 	public void update(Observable o, Object arg) {
+		
 		if (o instanceof PortServeurCptFourni) {
             (this.portConfigFourni).sendRequest(arg);
 		}

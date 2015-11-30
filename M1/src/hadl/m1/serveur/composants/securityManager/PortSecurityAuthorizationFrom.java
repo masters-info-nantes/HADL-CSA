@@ -6,7 +6,10 @@ public class PortSecurityAuthorizationFrom extends PortCptConfigRequis {
 
 	public PortSecurityAuthorizationFrom(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void sendToSecurityManager(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
+	}
 }

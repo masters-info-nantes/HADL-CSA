@@ -6,12 +6,10 @@ public class PortSecurityCheckTo extends PortCptConfigFourni {
 
 	public PortSecurityCheckTo(String name) {
 		super(name);
-
 	}
 
-
-    public void sendRequest(Object arg) {
-        setChanged();
-        notifyObservers(arg);
+    public void sendToClearanceRequest(Object arg) {
+    	this.setChanged();
+    	this.notifyObservers(arg);
     }
 }

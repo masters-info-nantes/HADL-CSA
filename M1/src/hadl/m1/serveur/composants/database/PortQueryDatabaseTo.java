@@ -6,10 +6,9 @@ public class PortQueryDatabaseTo extends PortCptConfigFourni {
 
 	public PortQueryDatabaseTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
-	public void sendResponse(Object arg) {
+	public void sendToSqlQuery(Object arg) {
         this.setChanged();
         this.notifyObservers(arg);
 	}

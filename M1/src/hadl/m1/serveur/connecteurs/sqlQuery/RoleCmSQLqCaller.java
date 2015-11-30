@@ -6,7 +6,10 @@ public class RoleCmSQLqCaller extends RoleRequis {
 
 	public RoleCmSQLqCaller(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void receiveFromConnectionManager(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

@@ -3,17 +3,20 @@ package hadl.m1.serveur.connecteurs.sqlQuery;
 import hadl.m2.interfaces.roles.RoleFourni;
 
 import java.util.Observable;
+import java.util.Observer;
 
-public class RoleCmSQLqCalled extends RoleFourni {
+public class RoleCmSQLqCalled extends RoleFourni implements Observer {
 
 	public RoleCmSQLqCalled(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
+		
+		if (o instanceof RoleDbSQLqCaller) {
+            setChanged();
+            notifyObservers(arg);
+        }
 	}
 
 }

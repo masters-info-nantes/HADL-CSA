@@ -6,11 +6,10 @@ public class PortSecurityCheckFrom extends PortCptConfigRequis {
 
 	public PortSecurityCheckFrom(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
-    public void sendResponse(Object arg) {
-        setChanged();
-        notifyObservers(arg);
+    public void sendToConnectionManager(Object arg) {
+    	this.setChanged();
+    	this.notifyObservers(arg);
     }
 }

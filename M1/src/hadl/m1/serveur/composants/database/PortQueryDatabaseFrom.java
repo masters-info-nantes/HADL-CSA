@@ -6,7 +6,10 @@ public class PortQueryDatabaseFrom extends PortCptConfigRequis {
 
 	public PortQueryDatabaseFrom(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void sendToDatabase(Object arg) {
+		this.setChanged();
+		this.notifyObservers(arg);
+	}
 }

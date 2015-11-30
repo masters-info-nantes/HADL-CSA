@@ -6,7 +6,10 @@ public class RoleDbSqCaller extends RoleRequis {
 
 	public RoleDbSqCaller(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void receiveFromDatabase(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

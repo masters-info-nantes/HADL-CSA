@@ -28,6 +28,7 @@ public class ClearanceRequest extends ConnecteurSimple  {
 
         this.glue();
 	}
+	
     public void glue () {
         System.out.println(this.getClass().getSimpleName()+" glue connection between : "+roleCmCrCalled.getName() +" and "+ roleSmCrCaller.getName() );
         roleCmCrCaller.addObserver(roleSmCrCalled);

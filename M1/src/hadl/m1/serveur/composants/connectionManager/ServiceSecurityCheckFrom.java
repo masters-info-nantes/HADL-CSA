@@ -9,12 +9,15 @@ public class ServiceSecurityCheckFrom extends ServiceCptConfigRequis implements 
 
 	public ServiceSecurityCheckFrom(String name) {
 		super(name);
-
+		
+		PortSecurityCheckFrom portSecurityCheckFrom = new PortSecurityCheckFrom("portSecurityCheckFrom");
+		portSecurityCheckFrom.addObserver(this);
+        addPorts(portSecurityCheckFrom);
 	}
 
     @Override
     public void update(Observable o, Object arg) {
-
+    	
         if (o instanceof PortSecurityCheckFrom) {
             setChanged();
             notifyObservers(arg);

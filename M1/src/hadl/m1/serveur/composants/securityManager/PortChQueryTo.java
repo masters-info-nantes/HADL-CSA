@@ -6,7 +6,10 @@ public class PortChQueryTo extends PortCptConfigFourni {
 
 	public PortChQueryTo(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
+	public void sendToSecurityQuery(Object arg) {
+    	this.setChanged();
+    	this.notifyObservers(arg);
+    }
 }

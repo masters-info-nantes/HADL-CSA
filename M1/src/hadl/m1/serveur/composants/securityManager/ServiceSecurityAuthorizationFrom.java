@@ -9,6 +9,7 @@ public class ServiceSecurityAuthorizationFrom extends ServiceCptConfigRequis imp
 
 	public ServiceSecurityAuthorizationFrom(String name) {
 		super(name);
+		
 		PortSecurityAuthorizationFrom portSecurityAuthorizationFrom = new PortSecurityAuthorizationFrom("portSecurityAuthorizationFrom");
 		addPorts(portSecurityAuthorizationFrom);
         portSecurityAuthorizationFrom.addObserver(this);
@@ -17,5 +18,9 @@ public class ServiceSecurityAuthorizationFrom extends ServiceCptConfigRequis imp
     @Override
     public void update(Observable o, Object arg) {
 
+    	if( o instanceof  PortSecurityAuthorizationFrom) {
+            setChanged();
+            notifyObservers();
+        }
     }
 }

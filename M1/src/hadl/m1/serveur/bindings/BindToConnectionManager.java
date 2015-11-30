@@ -1,26 +1,24 @@
 package hadl.m1.serveur.bindings;
 
-import hadl.m1.serveur.composants.connectionManager.PortExternalSocketFrom;
-import hadl.m1.serveur.serveurConfiguration.PortServeurRequis;
-import hadl.m2.liens.binding.BindingLinkRequis;
+import hadl.m1.serveur.composants.connectionManager.PortExternalSocketTo;
+import hadl.m1.serveur.serveurConfiguration.PortServeurFourni;
+import hadl.m2.liens.binding.BindingLinkFourni;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class BindToConnectionManager extends BindingLinkRequis  implements Observer {
+public class BindToConnectionManager extends BindingLinkFourni  implements Observer {
 
-	public BindToConnectionManager(PortServeurRequis psr,
-                                   PortExternalSocketFrom pesf) {
-        super(pesf, psr);
+	public BindToConnectionManager(PortServeurFourni psf, PortExternalSocketTo pesf) {
+        super(psf, pesf);
 
-        portConfigRequis.addObserver(this);
-		// TODO Auto-generated constructor stub
+        portConfigFourni.addObserver(this);
 	}
 
     @Override
     public void update(Observable o, Object arg) {
-        if(o instanceof  PortServeurRequis) {
-            ((PortExternalSocketFrom) portCptConfigRequis).sendRequest(arg);
+        if(o instanceof  PortExternalSocketTo) {
+            ((PortExternalSocketTo) portCptConfigFourni).sendToServeur(arg);
         }
     }
 

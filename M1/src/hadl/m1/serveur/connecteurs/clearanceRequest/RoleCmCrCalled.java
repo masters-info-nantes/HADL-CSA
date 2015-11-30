@@ -9,15 +9,14 @@ public class RoleCmCrCalled extends RoleFourni implements Observer {
 
 	public RoleCmCrCalled(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void update(Observable o, Object arg) {
-		if (o instanceof  RoleSmCrCaller) {
+		
+		if (o instanceof RoleSmCrCaller) {
             setChanged();
             notifyObservers(arg);
         }
-
 	}
 
 }

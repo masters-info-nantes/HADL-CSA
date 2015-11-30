@@ -9,15 +9,16 @@ public class ServiceExternalSocketFrom extends ServiceCptConfigRequis implements
 
 	public ServiceExternalSocketFrom(String name) {
 		super(name);
+		
 		PortExternalSocketFrom portExternalSocketFrom = new PortExternalSocketFrom("portExternalSocketFrom");
         portExternalSocketFrom.addObserver(this);
         addPorts(portExternalSocketFrom);
-
 	}
 
     @Override
     public void update(Observable o, Object arg) {
-        if( o instanceof  PortExternalSocketFrom) {
+    	
+        if( o instanceof PortExternalSocketFrom) {
             setChanged();
             notifyObservers();
         }

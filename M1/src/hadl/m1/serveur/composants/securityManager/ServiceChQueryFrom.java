@@ -9,6 +9,7 @@ public class ServiceChQueryFrom extends ServiceCptConfigRequis implements Observ
 
 	public ServiceChQueryFrom(String name) {
 		super(name);
+		
 		PortChQueryFrom portChQueryFrom = new PortChQueryFrom("portChQueryFrom");
 		portChQueryFrom.addObserver(this);
 		addPorts(portChQueryFrom);
@@ -17,5 +18,9 @@ public class ServiceChQueryFrom extends ServiceCptConfigRequis implements Observ
 	@Override
 	public void update(Observable o, Object arg) {
 
+		if( o instanceof PortChQueryFrom) {
+            setChanged();
+            notifyObservers();
+        }
 	}
 }

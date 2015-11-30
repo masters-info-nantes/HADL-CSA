@@ -17,5 +17,9 @@ public class ServiceSecurityManagementFrom extends ServiceCptConfigRequis implem
     @Override
     public void update(Observable o, Object arg) {
 
+    	if( o instanceof PortSecurityManagementFrom) {
+            setChanged();
+            notifyObservers();
+        }
     }
 }
