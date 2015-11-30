@@ -1,21 +1,22 @@
 package hadl.m2.configuration;
 
-import hadl.m2.element.Element;
-import hadl.m2.interfaces.InterfaceConfiguration;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import hadl.m2.element.Element;
+import hadl.m2.interfaces.InterfaceConfiguration;
+import hadl.m2.interfaces.ports.PortConfiguration;
 
 public class Configuration extends Element {
 
 	private List<Element> ListElement;
-	private List<InterfaceConfiguration> listInterfaces;
+	private InterfaceConfiguration interfaceConfiguration;
 	private String name;
 
 	public Configuration(String name) {
 
-		this.ListElement = new ArrayList<Element>();
-		this.listInterfaces = new ArrayList<InterfaceConfiguration>();
+		ListElement = new ArrayList<Element>();
+		interfaceConfiguration = new InterfaceConfiguration();
 		this.name = name;
 	}
 
@@ -23,17 +24,20 @@ public class Configuration extends Element {
 		ListElement.add(e);
 	}
 
-	public void addInterfaces(InterfaceConfiguration ic) {
-		listInterfaces.add(ic);
+	public void addInterfaces(PortConfiguration ic) {
+		interfaceConfiguration.addPort(ic);
 	}
 
 	public InterfaceConfiguration getInterface(String s) {
 
-		for (InterfaceConfiguration ic: listInterfaces) {
-			if(ic.getName().toLowerCase().equals(s.toLowerCase())){
+		for (InterfaceConfiguration ic : interfaceConfiguration.getPorts()) {
+			if (ic.getName().toLowerCase().equals(s.toLowerCase()))
 				return ic;
-			}
 		}
 		return null;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
