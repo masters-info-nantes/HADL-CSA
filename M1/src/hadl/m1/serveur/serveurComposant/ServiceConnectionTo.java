@@ -19,7 +19,4 @@ public class ServiceConnectionTo extends ServiceCptConfigRequis implements Obser
 		ports.add(new PortCptConfigRequis("PortCptConfigRequis"));
 	}
 
-
-
-    }
 }
