@@ -19,13 +19,13 @@ public class Client extends ComposantConfiguration implements Observer {
 
 	}
 
-	public void post(Object message) {
+	public void sendRequest(Object message) {
 
 		System.out.println("<- | " + this.getClass().getSimpleName()
 				+ "               | Send to Serveur : " + message);
 		ServiceEnvoiRequete service = (ServiceEnvoiRequete) (this
 				.getInterfaceElement("ServiceEnvoiRequete"));
-		service.sendMessage(message);
+		service.sendRequest(message);
 	}
 
 	public void update(Observable o, Object arg) {

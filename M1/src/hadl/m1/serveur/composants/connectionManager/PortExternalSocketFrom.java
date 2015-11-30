@@ -8,7 +8,7 @@ public class PortExternalSocketFrom extends PortCptConfigRequis {
 		super(name);
 	}
 
-	public void send(Object arg) {
+	public void sendRequest(Object arg) {
 			this.setChanged();
 			this.notifyObservers(arg);
 	}

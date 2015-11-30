@@ -9,7 +9,7 @@ public class PortSecurityCheckTo extends PortCptConfigFourni {
 
 	}
 
-	public void sendRequete(Object arg) {
+	public void sendResponse(Object arg) {
 		this.setChanged();
 		this.notifyObservers(arg);
 	}

@@ -11,11 +11,11 @@ public class ServiceEnvoiRequete extends ServiceCptConfigFourni {
 		this.addPort(portEnvoiRequete);
 	}
 
-	public void sendMessage(Object message) {
+	public void sendRequest(Object message) {
 		PortEnvoiRequete per = (PortEnvoiRequete) this
 				.getPort("PortEnvoiRequete");
 
-		per.sendMessage(message);
+		per.sendRequest(message);
 	}
 
 }

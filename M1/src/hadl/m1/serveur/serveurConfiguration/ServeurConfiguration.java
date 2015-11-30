@@ -1,7 +1,11 @@
 package hadl.m1.serveur.serveurConfiguration;
 
 import hadl.m1.serveur.attachments.*;
+import hadl.m1.serveur.bindings.BindToConnectionManager;
+import hadl.m1.serveur.bindings.BindToServeur;
 import hadl.m1.serveur.composants.connectionManager.ConnectionManager;
+import hadl.m1.serveur.composants.connectionManager.PortExternalSocketFrom;
+import hadl.m1.serveur.composants.connectionManager.PortExternalSocketTo;
 import hadl.m1.serveur.composants.database.Database;
 import hadl.m1.serveur.composants.securityManager.SecurityManager;
 import hadl.m1.serveur.connecteurs.clearanceRequest.ClearanceRequest;
@@ -9,6 +13,7 @@ import hadl.m1.serveur.connecteurs.securityQuery.SecurityQuery;
 import hadl.m1.serveur.connecteurs.sqlQuery.SQLQuery;
 import hadl.m1.serveur.serveurComposant.ServeurComposant;
 import hadl.m2.configuration.Configuration;
+import hadl.m2.interfaces.ports.PortConfigFourni;
 import hadl.m2.interfaces.ports.PortCptConfigFourni;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 import hadl.m2.interfaces.roles.RoleFourni;
@@ -61,10 +66,8 @@ public class ServeurConfiguration extends Configuration implements Observer {
         AttachmentSecurityCheckFrom attachmentSecurityCheckFrom  = new AttachmentSecurityCheckFrom((RoleFourni)clearanceRequest.getRole("rolecmcrcalled"), (PortCptConfigRequis)connexionManager.getInterfaceElement("portsecuritycheckfrom"));
         AttachmentSecurityCheckTo attachmentSecurityCheckTo = new AttachmentSecurityCheckTo((PortCptConfigFourni)connexionManager.getInterfaceElement("portsecuritycheckto"), (RoleRequis)clearanceRequest.getRole("cmcrcaller"));
 
-
         AttachmentChQueryFrom attachmentChQueryFrom = new AttachmentChQueryFrom((RoleFourni) securityQuery.getRole("RoleSmSqCalled"), (PortCptConfigRequis) securityManager.getInterfaceElement("PortChQueryFrom"));
         AttachmentChQueryTo attachmentChQueryTo = new AttachmentChQueryTo((PortCptConfigFourni) securityManager.getInterfaceElement("PortChQueryTo"), (RoleRequis) securityQuery.getRole("RoleSmSqCalled"));
-
 
         AttachmentDatabaseQueryFrom attachmentDatabaseQueryFrom = new AttachmentDatabaseQueryFrom((RoleFourni) sqlQuery.getRole("rolecmsqlqcalled") ,(PortCptConfigRequis)connexionManager.getInterfaceElement("portDataBasequeryFrom") );
         AttachmentDatabaseQueryTo attachmentDatabaseQueryTo = new AttachmentDatabaseQueryTo((PortCptConfigFourni)connexionManager.getInterfaceElement("portdatabasequeryto"), (RoleRequis)sqlQuery.getRole("rolecmsqlqcaller"));
@@ -78,7 +81,8 @@ public class ServeurConfiguration extends Configuration implements Observer {
         AttachmentSecurityManagementFrom attachmentSecurityManagementFrom = new AttachmentSecurityManagementFrom((RoleFourni)securityQuery.getRole("roledbsqlcalled"), (PortCptConfigRequis)database.getInterfaceElement("portsecuritymanagementfrom"));
         AttachmentSecurityManagementTo attachmentSecurityManagementTo = new AttachmentSecurityManagementTo((PortCptConfigFourni)database.getInterfaceElement("portsecuritymanagementfrom"), (RoleRequis)securityQuery.getRole("roledbsqlcalled"));
 
-
+        BindToConnectionManager bindToConnectionManager = new BindToConnectionManager((PortServeurRequis) this.getInterface("Portserveurrequis") , (PortExternalSocketFrom) connexionManager.getInterfaceElement("portexternalsocketfrom"));
+        BindToServeur bindToServeur = new BindToServeur((PortConfigFourni) this.getInterface("portserveurrequis"), (PortExternalSocketTo)connexionManager.getInterfaceElement(""));
 
 	}
 
@@ -86,10 +90,10 @@ public class ServeurConfiguration extends Configuration implements Observer {
     public void update(Observable o, Object arg) {
 
             if(o instanceof PortServeurConfigRequis ) {
-                ((PortServeurConfigFourni)getInterface("portServeurConfigFourni")).send(arg);
+                ((PortServeurConfigFourni)getInterface("portServeurConfigFourni")).sendResponse(arg);
 
             }else if(o instanceof PortServeurRequis) {
-                ((PortServeurFourni)getInterface("portServeurRequis")).send(arg);
+                ((PortServeurFourni)getInterface("portServeurFournie")).sendResponse(arg);
             }
     }
 

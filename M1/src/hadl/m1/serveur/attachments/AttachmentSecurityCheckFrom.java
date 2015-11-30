@@ -10,12 +10,14 @@ public class AttachmentSecurityCheckFrom extends AttachmentToPort {
 
 	public AttachmentSecurityCheckFrom(RoleFourni rf, PortCptConfigRequis pfr) {
 		super(rf, pfr);
-		// TODO Auto-generated constructor stub
+		rf.addObserver(this);
 	}
 
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 
-	}
-
+    @Override
+    public void update(Observable o, Object arg) {
+        if(o instanceof RoleFourni ) {
+            this.port.sendResponse();
+        }
+    }
 }

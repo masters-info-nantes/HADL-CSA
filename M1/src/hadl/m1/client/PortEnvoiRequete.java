@@ -9,7 +9,7 @@ public class PortEnvoiRequete extends PortCptConfigFourni {
 
 	}
 
-	public void sendMessage(Object message) {
+	public void sendRequest(Object message) {
         this.setChanged();
         this.notifyObservers(message);
 	}
