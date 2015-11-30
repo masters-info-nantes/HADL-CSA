@@ -3,8 +3,9 @@ package hadl.m1.serveur.connecteurs.clearanceRequest;
 import hadl.m2.interfaces.roles.RoleFourni;
 
 import java.util.Observable;
+import java.util.Observer;
 
-public class RoleCmCrCalled extends RoleFourni {
+public class RoleCmCrCalled extends RoleFourni implements Observer {
 
 	public RoleCmCrCalled(String name) {
 		super(name);
@@ -12,7 +13,9 @@ public class RoleCmCrCalled extends RoleFourni {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (o instanceof  RoleCmCrCalled) {
+		if (o instanceof  RoleSmCrCaller) {
+            setChanged();
+            notifyObservers(arg);
         }
 
 	}

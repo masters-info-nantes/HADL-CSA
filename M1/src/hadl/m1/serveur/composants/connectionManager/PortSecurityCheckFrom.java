@@ -9,4 +9,8 @@ public class PortSecurityCheckFrom extends PortCptConfigRequis {
 		// TODO Auto-generated constructor stub
 	}
 
+    public void sendResponse(Object arg) {
+        setChanged();
+        notifyObservers(arg);
+    }
 }

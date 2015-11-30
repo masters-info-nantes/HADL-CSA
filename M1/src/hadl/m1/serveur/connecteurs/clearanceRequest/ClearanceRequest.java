@@ -2,10 +2,7 @@ package hadl.m1.serveur.connecteurs.clearanceRequest;
 
 import hadl.m2.connecteur.ConnecteurSimple;
 
-import java.util.Observable;
-import java.util.Observer;
-
-public class ClearanceRequest extends ConnecteurSimple implements Observer {
+public class ClearanceRequest extends ConnecteurSimple  {
 
 	private RoleCmCrCalled roleCmCrCalled;
 	private RoleCmCrCaller roleCmCrCaller;
@@ -28,14 +25,15 @@ public class ClearanceRequest extends ConnecteurSimple implements Observer {
 		addRole(roleSmCrCalled);
 		addRole(roleSmCrCaller);
 
-		roleCmCrCaller.addObserver(this);
-		roleSmCrCaller.addObserver(this);
-	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
+        this.glue();
 	}
+    public void glue () {
+        System.out.println(this.getClass().getSimpleName()+" glue connection between : "+roleCmCrCalled.getName() +" and "+ roleSmCrCaller.getName() );
+        roleCmCrCaller.addObserver(roleSmCrCalled);
+        System.out.println(this.getClass().getSimpleName()+" glue connection between : "+roleSmCrCalled.getName() +" and "+ roleCmCrCaller.getName());
+        roleSmCrCaller.addObserver(roleCmCrCalled);
+    }
+
 
 }
