@@ -5,7 +5,8 @@ import hadl.m2.interfaces.InterfaceConnecteur;
 import hadl.m2.interfaces.roles.Role;
 
 public abstract class Connecteur extends Element {
-	enum TypeConnecteur {
+
+    enum TypeConnecteur {
 		implicite, explicite, enumeree;
 	}
 

@@ -1,9 +1,10 @@
 package hadl.m1.serveur.connecteurs.securityQuery;
 
+import hadl.m2.connecteur.ConnecteurSimple;
+import hadl.m2.interfaces.roles.Role;
+
 import java.util.Observable;
 import java.util.Observer;
-
-import hadl.m2.connecteur.ConnecteurSimple;
 
 public class SecurityQuery extends ConnecteurSimple implements Observer {
 
@@ -37,4 +38,9 @@ public class SecurityQuery extends ConnecteurSimple implements Observer {
 		// TODO Auto-generated method stub
 
 	}
+
+    public Role getRole(String roleSmSqCalled) {
+        return this.interfaceConnecteur.getRole(roleSmSqCalled);
+
+    }
 }

@@ -1,9 +1,9 @@
 package hadl.m2.interfaces;
 
+import hadl.m2.interfaces.roles.Role;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import hadl.m2.interfaces.roles.Role;
 
 public class InterfaceConnecteur extends Interface {
 	private List<Role> roles;
@@ -20,4 +20,14 @@ public class InterfaceConnecteur extends Interface {
 	public void remove(Role role) {
 		roles.remove(role);
 	}
+
+    public Role getRole(String roleSmSqCalled) {
+
+        for (Role r: roles) {
+            if (roleSmSqCalled.toLowerCase().equals(r.getName().toLowerCase())){
+                return r;
+            }
+        }
+        return null;
+    }
 }

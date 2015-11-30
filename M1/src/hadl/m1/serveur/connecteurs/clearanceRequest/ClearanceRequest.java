@@ -1,9 +1,9 @@
 package hadl.m1.serveur.connecteurs.clearanceRequest;
 
+import hadl.m2.connecteur.ConnecteurSimple;
+
 import java.util.Observable;
 import java.util.Observer;
-
-import hadl.m2.connecteur.ConnecteurSimple;
 
 public class ClearanceRequest extends ConnecteurSimple implements Observer {
 
@@ -37,6 +37,5 @@ public class ClearanceRequest extends ConnecteurSimple implements Observer {
 		// TODO Auto-generated method stub
 
 	}
-
 
 }

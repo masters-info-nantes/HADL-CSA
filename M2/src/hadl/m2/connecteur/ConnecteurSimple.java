@@ -1,6 +1,7 @@
 package hadl.m2.connecteur;
 
 import hadl.m2.interfaces.InterfaceConnecteur;
+import hadl.m2.interfaces.roles.Role;
 
 public class ConnecteurSimple extends Connecteur {
 
@@ -14,4 +15,8 @@ public class ConnecteurSimple extends Connecteur {
 
 	protected void glue() {
 	}
+
+    public Role getRole(String rolename) {
+        return interfaceConnecteur.getRole(rolename);
+    }
 }

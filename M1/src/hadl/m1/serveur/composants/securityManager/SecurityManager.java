@@ -27,10 +27,13 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
 
 
     }
-
-
+    
     @Override
     public void update(Observable o, Object arg) {
+
+    }
+
+    public static void getInterface(String portChQueryFrom) {
 
     }
 }

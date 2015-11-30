@@ -10,11 +10,10 @@ public class AttachmentChQueryFrom extends AttachmentToPort {
 
 	public AttachmentChQueryFrom(RoleFourni rf, PortCptConfigRequis pfr) {
 		super(rf, pfr);
-		// TODO Auto-generated constructor stub
+		rf.addObserver(this);
 	}
 
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 
 	}
 
