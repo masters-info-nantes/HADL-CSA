@@ -9,7 +9,8 @@ public class PortSecurityManagementFrom extends PortCptConfigRequis {
 	}
 
 	public void receiveFromSecurityQuery(Object arg) {
-		this.setChanged();
+
+        this.setChanged();
 		this.notifyObservers(arg);
 	}
 }

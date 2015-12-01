@@ -20,7 +20,7 @@ public class ServiceChQueryFrom extends ServiceCptConfigRequis implements Observ
 
 		if( o instanceof PortChQueryFrom) {
             setChanged();
-            notifyObservers();
+            notifyObservers(arg);
         }
 	}
 }

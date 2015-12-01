@@ -12,6 +12,7 @@ public class ServiceSecurityCheckTo extends ServiceCptConfigFourni {
 	}
 
     public void sendToClearanceRequest(Object arg) {
+
         ((PortSecurityCheckTo) getPort("portSecurityCheckTo")).sendToClearanceRequest(arg);
     }
 }

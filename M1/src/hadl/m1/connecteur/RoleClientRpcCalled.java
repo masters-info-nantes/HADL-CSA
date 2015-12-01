@@ -11,6 +11,7 @@ public class RoleClientRpcCalled extends RoleFourni {
 	}
 
 	public void update(Observable o, Object arg) {
+
 		if (o instanceof RoleServerRpcCaller) {
 			this.setChanged();
 			this.notifyObservers(arg);

@@ -31,17 +31,22 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
     
     @Override
     public void update(Observable o, Object arg) {
+
         if(o instanceof ServiceChQueryFrom) {
             if(arg instanceof Response) {
                 if(((Response) arg).getSuccess().equals(false)){
+
                     Response response = new Response("Authentification False",false);
                     ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
+
                 }else{
-                    ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(arg);
+                    Response response = new Response("Authentification succeed",true);
+                    ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
                 }
 
             }
         }else if (o instanceof ServiceSecurityAuthorizationFrom) {
+
             ((ServiceChQueryTo)getInterfaceService("ServiceChQueryTo")).sendToSecurityQuery(arg);
         }
 

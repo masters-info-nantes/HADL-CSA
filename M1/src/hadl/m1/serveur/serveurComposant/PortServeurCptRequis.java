@@ -10,8 +10,9 @@ public class PortServeurCptRequis extends PortCptConfigRequis {
 	}
 
     public void sendRequest(Object arg) {
+
         setChanged();
-        notifyObservers();
+        notifyObservers(arg);
     }
 
 }

@@ -10,7 +10,7 @@ public class RoleClientRpcCaller extends RoleRequis {
 	}
 
 	public void getRequete(Object arg) {
-		this.setChanged();
+        this.setChanged();
 		this.notifyObservers(arg);
 	}
 

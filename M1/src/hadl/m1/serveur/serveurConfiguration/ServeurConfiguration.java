@@ -3,6 +3,8 @@ package hadl.m1.serveur.serveurConfiguration;
 import hadl.m1.serveur.attachments.*;
 import hadl.m1.serveur.bindings.BindToConnectionManager;
 import hadl.m1.serveur.bindings.BindToServeur;
+import hadl.m1.serveur.bindings.BindToServeurConfig;
+import hadl.m1.serveur.bindings.BindToServeurCpt;
 import hadl.m1.serveur.composants.connectionManager.*;
 import hadl.m1.serveur.composants.database.*;
 import hadl.m1.serveur.composants.securityManager.SecurityManager;
@@ -10,15 +12,11 @@ import hadl.m1.serveur.composants.securityManager.*;
 import hadl.m1.serveur.connecteurs.clearanceRequest.ClearanceRequest;
 import hadl.m1.serveur.connecteurs.securityQuery.SecurityQuery;
 import hadl.m1.serveur.connecteurs.sqlQuery.SQLQuery;
-import hadl.m1.serveur.serveurComposant.ServeurComposant;
-import hadl.m1.serveur.serveurComposant.ServiceConnectionFrom;
-import hadl.m1.serveur.serveurComposant.ServiceConnectionTo;
+import hadl.m1.serveur.serveurComposant.*;
 import hadl.m2.configuration.Configuration;
 import hadl.m2.element.Element;
 import hadl.m2.interfaces.roles.RoleFourni;
 import hadl.m2.interfaces.roles.RoleRequis;
-import hadl.m2.liens.binding.BindingLinkFourni;
-import hadl.m2.liens.binding.BindingLinkRequis;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -41,8 +39,7 @@ public class ServeurConfiguration extends Configuration implements Observer {
         addInterfaces(portServeurFourni);
         addInterfaces(portServeurRequis);
 
-        portServeurConfigRequis.addObserver(this);
-        portServeurRequis.addObserver(this);
+
 
         //composition avec les composants
         ServeurComposant serveurComposant = new ServeurComposant("serveurComposant");
@@ -54,6 +51,7 @@ public class ServeurConfiguration extends Configuration implements Observer {
         ClearanceRequest clearanceRequest = new ClearanceRequest("clearanceRequest");
         SQLQuery sqlQuery = new SQLQuery("sqlQuery");
         SecurityQuery securityQuery = new SecurityQuery("securityQuery");
+
 
         addElement(serveurComposant);
         addElement(database);
@@ -127,8 +125,11 @@ public class ServeurConfiguration extends Configuration implements Observer {
         BindToConnectionManager bindToConnectionManager = new BindToConnectionManager((PortServeurFourni) this.getInterface("Portserveurfourni") , (PortExternalSocketTo) serviceExternalSocketTo.getPort("portExternalSocketTo"));
         BindToServeur bindToServeur = new BindToServeur((PortServeurRequis) this.getInterface("portserveurrequis"), (PortExternalSocketFrom)serviceExternalSocketFrom.getPort("PortExternalSocketFrom"));
 
-        BindingLinkFourni bindingLinkFourni = new BindingLinkFourni((PortServeurConfigFourni)this.getInterface("PortServeurconfigFourni"), serviceConnectionFrom.getPort("PortServeurCptFourni"));
-        BindingLinkRequis bindingLinkRequis = new BindingLinkRequis(serviceConnectionTo.getPort("PortServeurCptRequis"), (PortServeurConfigRequis)this.getInterface("PortServeurConfigRequis"));
+        BindToServeurCpt bindToServeurCpt = new BindToServeurCpt((PortServeurConfigRequis)this.getInterface("PortServeurConfigRequis"), (PortServeurCptRequis) serviceConnectionTo.getPort("PortServeurCptRequis"));
+        BindToServeurConfig bindToServeurConfig = new BindToServeurConfig((PortServeurCptFourni) serviceConnectionFrom.getPort("PortServeurCptFourni"),(PortServeurConfigFourni)this.getInterface("PortServeurconfigFourni"));
+
+        portServeurConfigRequis.addObserver(this);
+        portServeurFourni.addObserver(this);
     }
 
     @Override

@@ -50,6 +50,7 @@ public class Database extends ComposantConfiguration implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
         if(o instanceof ServiceSecurityManagementFrom){
             if(arg instanceof Query) {
                 if(exist(((Query)arg).getContent())){

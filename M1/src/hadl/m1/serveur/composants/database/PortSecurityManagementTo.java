@@ -9,6 +9,7 @@ public class PortSecurityManagementTo extends PortCptConfigFourni {
 	}
 
 	public void sendToSecurityQuery(Object arg) {
+
         this.setChanged();
         this.notifyObservers(arg);
     }

@@ -11,11 +11,14 @@ public class ServiceReceptionReponse extends ServiceCptConfigRequis implements O
 		super(name);
         PortReceptionReponse portReceptionReponse = new PortReceptionReponse("PortReceptionReponse");
         addPorts(portReceptionReponse);
+        portReceptionReponse.addObserver(this);
+
 	}
 
 
     @Override
     public void update(Observable o, Object arg) {
+
         setChanged();
         notifyObservers(arg);
     }

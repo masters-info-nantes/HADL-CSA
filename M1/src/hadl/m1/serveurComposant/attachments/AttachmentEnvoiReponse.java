@@ -15,6 +15,7 @@ public class AttachmentEnvoiReponse extends AttachmentToRole {
 	}
 
 	public void update(Observable o, Object arg) {
+
 		if (o instanceof PortEnvoiReponse) {
 			if (arg instanceof Response) {
 				((RoleServerRpcCaller) this.role).getResponse(arg);

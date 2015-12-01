@@ -12,6 +12,7 @@ public class ServiceSecurityManagementTo extends ServiceCptConfigFourni {
 	}
 
 	public void sendToSecurityQuery(Object arg) {
+
         ((PortSecurityManagementTo) getPort("portSecurityManagementTo")).sendToSecurityQuery(arg);
     }
 }

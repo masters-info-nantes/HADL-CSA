@@ -20,7 +20,7 @@ public class ServiceSecurityAuthorizationFrom extends ServiceCptConfigRequis imp
 
     	if( o instanceof  PortSecurityAuthorizationFrom) {
             setChanged();
-            notifyObservers();
+            notifyObservers(arg);
         }
     }
 }

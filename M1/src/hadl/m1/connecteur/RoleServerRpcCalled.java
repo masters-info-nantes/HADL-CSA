@@ -6,15 +6,19 @@ import java.util.Observable;
 
 public class RoleServerRpcCalled extends RoleFourni {
 
-	public RoleServerRpcCalled(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
+    public RoleServerRpcCalled(String name) {
+        super(name);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void update(Observable o, Object arg) {
-		if (o instanceof RoleClientRpcCaller) {
-			this.setChanged();
-			this.notifyObservers(arg);
-		}
-	}
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+        if (o instanceof RoleClientRpcCaller) {
+            this.setChanged();
+            this.notifyObservers(arg);
+        }
+
+    }
 }

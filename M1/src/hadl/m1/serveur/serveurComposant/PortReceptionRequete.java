@@ -9,7 +9,8 @@ public class PortReceptionRequete extends PortCptConfigRequis {
 	}
 
 	public void getRequete(Object arg) {
-		this.setChanged();
+        System.out.println("receiven requete");
+        this.setChanged();
 		this.notifyObservers(arg);
 	}
 

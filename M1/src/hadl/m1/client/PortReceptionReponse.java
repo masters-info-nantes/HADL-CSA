@@ -10,6 +10,7 @@ public class PortReceptionReponse extends PortCptConfigRequis {
 	}
 
     public void getResponse(Object arg) {
+
         this.setChanged();
         this.notifyObservers(arg);
     }

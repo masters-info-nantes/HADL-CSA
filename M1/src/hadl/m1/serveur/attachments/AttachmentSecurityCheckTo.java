@@ -1,12 +1,12 @@
 package hadl.m1.serveur.attachments;
 
-import java.util.Observable;
-
 import hadl.m1.serveur.composants.connectionManager.PortSecurityCheckTo;
 import hadl.m1.serveur.connecteurs.clearanceRequest.RoleCmCrCaller;
 import hadl.m2.interfaces.ports.PortCptConfigFourni;
 import hadl.m2.interfaces.roles.RoleRequis;
 import hadl.m2.liens.attachment.AttachmentToRole;
+
+import java.util.Observable;
 
 public class AttachmentSecurityCheckTo extends AttachmentToRole {
 
@@ -19,7 +19,9 @@ public class AttachmentSecurityCheckTo extends AttachmentToRole {
 	@Override
 	public void update(Observable o, Object arg) {
 
-		if (o instanceof PortSecurityCheckTo) {
+
+        if (o instanceof PortSecurityCheckTo) {
+
 			((RoleCmCrCaller) role).receiveFromConnectionManager(arg);
 		}
 	}

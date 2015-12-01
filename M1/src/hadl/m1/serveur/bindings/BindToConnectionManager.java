@@ -17,6 +17,7 @@ public class BindToConnectionManager extends BindingLinkFourni  implements Obser
 
     @Override
     public void update(Observable o, Object arg) {
+
         if(o instanceof  PortExternalSocketTo) {
             ((PortServeurFourni) portConfigFourni).sendToServeur(arg);
         }

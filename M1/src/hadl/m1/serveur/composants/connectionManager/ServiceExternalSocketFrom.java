@@ -20,7 +20,7 @@ public class ServiceExternalSocketFrom extends ServiceCptConfigRequis implements
     	
         if( o instanceof PortExternalSocketFrom ) {
             setChanged();
-            notifyObservers();
+            notifyObservers(arg);
         }
     }
 }

@@ -9,7 +9,6 @@ public class PortExternalSocketFrom extends PortCptConfigRequis {
 	}
 
     public void sendToConnexionManager(Object arg) {
-
         this.setChanged();
         this.notifyObservers(arg);
     }

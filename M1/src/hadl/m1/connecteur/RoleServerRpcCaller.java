@@ -11,6 +11,7 @@ public class RoleServerRpcCaller extends RoleRequis {
 
 
     public void getResponse(Object arg) {
+
         setChanged();
         notifyObservers(arg);
     }

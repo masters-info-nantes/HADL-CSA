@@ -19,6 +19,7 @@ public class BindToServeur extends BindingLinkRequis implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
         if(o instanceof PortServeurRequis) {
             ((PortExternalSocketFrom) portCptConfigRequis).sendToConnexionManager(arg);
         }

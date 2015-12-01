@@ -19,7 +19,7 @@ public class ServiceSecurityManagementFrom extends ServiceCptConfigRequis implem
 
     	if( o instanceof PortSecurityManagementFrom) {
             setChanged();
-            notifyObservers();
+            notifyObservers(arg);
         }
     }
 }

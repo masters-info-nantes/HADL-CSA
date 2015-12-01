@@ -9,6 +9,7 @@ public class RoleSmCrCaller extends RoleRequis{
 	}
 
 	public void receiveFromSecurityManager(Object arg) {
+
         setChanged();
         notifyObservers(arg);
     }

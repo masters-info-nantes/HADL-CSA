@@ -19,7 +19,7 @@ public class ServiceQueryDatabaseFrom extends ServiceCptConfigRequis implements 
 
     	if( o instanceof PortQueryDatabaseFrom) {
             setChanged();
-            notifyObservers();
+            notifyObservers(arg);
         }
     }
 }

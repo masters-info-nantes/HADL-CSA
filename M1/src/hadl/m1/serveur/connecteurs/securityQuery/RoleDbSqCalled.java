@@ -12,8 +12,8 @@ public class RoleDbSqCalled extends RoleFourni implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		
-		if (o instanceof RoleSmSqCaller) {
+
+        if (o instanceof RoleSmSqCaller) {
             setChanged();
             notifyObservers(arg);
         }

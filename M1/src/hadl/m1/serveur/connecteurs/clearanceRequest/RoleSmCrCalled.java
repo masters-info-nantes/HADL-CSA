@@ -12,8 +12,8 @@ public class RoleSmCrCalled extends RoleFourni implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		
-		if (o instanceof RoleCmCrCaller) {
+
+        if (o instanceof RoleCmCrCaller) {
             setChanged();
             notifyObservers(arg);
         }
