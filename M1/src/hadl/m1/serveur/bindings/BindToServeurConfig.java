@@ -12,13 +12,13 @@ public class BindToServeurConfig extends BindingLinkFourni implements Observer {
 	public BindToServeurConfig(PortServeurCptFourni portServeurComp, PortServeurConfigFourni portServeurConf) {
 
 		super(portServeurConf, portServeurComp);
-		this.portCptConfigFourni.addObserver(this);
+		this.portConfigFourni.addObserver(this);
 	}
 
 	public void update(Observable o, Object arg) {
 		
-		if (o instanceof PortServeurCptFourni) {
-            (this.portConfigFourni).sendRequest(arg);
+		if (o instanceof PortServeurConfigFourni) {
+            ((PortServeurCptFourni) this.portCptConfigFourni).sendRequest(arg);
 		}
 
 	}

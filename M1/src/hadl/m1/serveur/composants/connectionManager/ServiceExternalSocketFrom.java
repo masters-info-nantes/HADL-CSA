@@ -18,7 +18,7 @@ public class ServiceExternalSocketFrom extends ServiceCptConfigRequis implements
     @Override
     public void update(Observable o, Object arg) {
     	
-        if( o instanceof PortExternalSocketFrom) {
+        if( o instanceof PortExternalSocketFrom ) {
             setChanged();
             notifyObservers();
         }

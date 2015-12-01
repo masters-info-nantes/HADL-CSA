@@ -3,23 +3,19 @@ package hadl.m1.serveur.serveurComposant;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 import hadl.m2.interfaces.services.ServiceCptConfigRequis;
 
-import java.util.Observable;
-import java.util.Observer;
-
-public class ServiceConnectionTo extends ServiceCptConfigRequis implements Observer {
+public class ServiceConnectionTo extends ServiceCptConfigRequis  {
 
 	public ServiceConnectionTo(String name) {
 		super(name);
-
-		ports.add(new PortCptConfigRequis("PortServeurConfigRequis"));
+        PortCptConfigRequis portServeurConfigRequis = new PortCptConfigRequis("PortServeurConfigRequis");
+        ports.add(portServeurConfigRequis);
 	}
 
 
-    @Override
-    public void update(Observable o, Object arg) {
-        if(o instanceof PortCptConfigRequis) {
-            setChanged();
-            notifyObservers(arg);
-        }
+    public void sendRequest(Object arg) {
+
+        ((PortServeurCptRequis)this.getPort("portServeurCptRequis")).sendRequest(arg);
     }
+
+
 }

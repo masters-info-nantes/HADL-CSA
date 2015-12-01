@@ -12,13 +12,13 @@ public class BindToConnectionManager extends BindingLinkFourni  implements Obser
 	public BindToConnectionManager(PortServeurFourni psf, PortExternalSocketTo pesf) {
         super(psf, pesf);
 
-        portConfigFourni.addObserver(this);
+        portCptConfigFourni.addObserver(this);
 	}
 
     @Override
     public void update(Observable o, Object arg) {
         if(o instanceof  PortExternalSocketTo) {
-            ((PortExternalSocketTo) portCptConfigFourni).sendToServeur(arg);
+            ((PortServeurFourni) portConfigFourni).sendToServeur(arg);
         }
     }
 

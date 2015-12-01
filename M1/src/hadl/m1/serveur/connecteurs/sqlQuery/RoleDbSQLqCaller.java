@@ -12,4 +12,5 @@ public class RoleDbSQLqCaller extends RoleRequis {
         setChanged();
         notifyObservers(arg);
     }
+
 }

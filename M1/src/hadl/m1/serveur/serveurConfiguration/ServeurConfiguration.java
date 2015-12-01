@@ -13,7 +13,6 @@ import hadl.m1.serveur.connecteurs.securityQuery.SecurityQuery;
 import hadl.m1.serveur.connecteurs.sqlQuery.SQLQuery;
 import hadl.m1.serveur.serveurComposant.ServeurComposant;
 import hadl.m2.configuration.Configuration;
-import hadl.m2.interfaces.ports.PortConfigFourni;
 import hadl.m2.interfaces.ports.PortCptConfigFourni;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 import hadl.m2.interfaces.roles.RoleFourni;
@@ -88,13 +87,14 @@ public class ServeurConfiguration extends Configuration implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-            //attention la requete du client passe par le port fourni a cause du fournie-fournie de binding
-            if(o instanceof PortServeurConfigFourni ) {
-                ((PortServeurRequis)getInterface("PortServeurRequis")).sendRequest(arg);
-            }else if(o instanceof PortServeurRequis) { // on reçois une réponse des composants serveur
-                // on utilise l'autre lien requis-requis (meme si ça va a l'encontre du port)
-                ((PortServeurConfigRequis) getInterface("portServeurConfigRequis")).sendResponse(arg);
 
+            if(o instanceof PortServeurFourni ) {
+
+                ((PortServeurConfigFourni) getInterface("portServeurConfigFourni")).sendResponse(arg);
+
+            }else if(o instanceof PortServeurConfigRequis) {
+
+                ((PortServeurRequis) getInterface("PortServeurRequis")).sendToConnexionManager(arg);
             }
     }
 

@@ -9,8 +9,9 @@ public class PortServeurFourni extends PortConfigFourni {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void sendResponse(Object arg) {
+
+    public void sendToServeur(Object arg) {
         setChanged();
         notifyObservers(arg);
-	}
+    }
 }

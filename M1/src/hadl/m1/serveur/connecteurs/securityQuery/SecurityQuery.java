@@ -1,12 +1,8 @@
 package hadl.m1.serveur.connecteurs.securityQuery;
 
 import hadl.m2.connecteur.ConnecteurSimple;
-import hadl.m2.interfaces.roles.Role;
 
-import java.util.Observable;
-import java.util.Observer;
-
-public class SecurityQuery extends ConnecteurSimple implements Observer {
+public class SecurityQuery extends ConnecteurSimple {
 
 	private RoleSmSqCalled roleSmSqCalled;
 	private RoleSmSqCaller roleSmSqCaller;
@@ -29,18 +25,13 @@ public class SecurityQuery extends ConnecteurSimple implements Observer {
 		addRole(roleDbSqCalled);
 		addRole(roleDbSqCaller);
 
-		roleSmSqCaller.addObserver(this);
-		roleDbSqCaller.addObserver(this);
+		this.glue();
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
-	}
-
-    public Role getRole(String roleSmSqCalled) {
-        return this.interfaceConnecteur.getRole(roleSmSqCalled);
-
+    public void glue() {
+        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleSmSqCaller.getName()+ " and "+ roleDbSqCalled.getName());
+        roleDbSqCaller.add(roleSmSqCalled);
+        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleDbSqCaller.getName()+ " and "+ roleSmSqCalled.getName());
+        roleSmSqCaller.add(roleDbSqCalled);
     }
 }

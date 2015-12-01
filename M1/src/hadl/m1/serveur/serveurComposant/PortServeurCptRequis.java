@@ -9,4 +9,9 @@ public class PortServeurCptRequis extends PortCptConfigRequis {
 		// TODO Auto-generated constructor stub
 	}
 
+    public void sendRequest(Object arg) {
+        setChanged();
+        notifyObservers();
+    }
+
 }

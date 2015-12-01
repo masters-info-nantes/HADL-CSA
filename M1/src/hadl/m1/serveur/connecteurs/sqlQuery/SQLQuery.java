@@ -1,40 +1,37 @@
 package hadl.m1.serveur.connecteurs.sqlQuery;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import hadl.m2.connecteur.ConnecteurSimple;
 
-public class SQLQuery extends ConnecteurSimple implements Observer {
+public class SQLQuery extends ConnecteurSimple {
 
-	private RoleCmSQLqCalled roleCmSQLqCalled;
-	private RoleCmSQLqCaller roleCmSQLqCaller;
+    private RoleCmSQLqCalled roleCmSQLqCalled;
+    private RoleCmSQLqCaller roleCmSQLqCaller;
 
-	private RoleDbSQLqCalled roleDbSQLqCalled;
-	private RoleDbSQLqCaller roleDbSQLqCaller;
+    private RoleDbSQLqCalled roleDbSQLqCalled;
+    private RoleDbSQLqCaller roleDbSQLqCaller;
 
-	public SQLQuery(String name) {
-		super(name);
+    public SQLQuery(String name) {
+        super(name);
 
-		roleCmSQLqCalled = new RoleCmSQLqCalled("roleCmSQLqCalled");
-		roleCmSQLqCaller = new RoleCmSQLqCaller("roleCmSQLqCaller");
+        roleCmSQLqCalled = new RoleCmSQLqCalled("roleCmSQLqCalled");
+        roleCmSQLqCaller = new RoleCmSQLqCaller("roleCmSQLqCaller");
 
-		roleDbSQLqCalled = new RoleDbSQLqCalled("roleDbSQLqCalled");
-		roleDbSQLqCaller = new RoleDbSQLqCaller("roleDbSQLqCaller");
+        roleDbSQLqCalled = new RoleDbSQLqCalled("roleDbSQLqCalled");
+        roleDbSQLqCaller = new RoleDbSQLqCaller("roleDbSQLqCaller");
 
-		addRole(roleCmSQLqCalled);
-		addRole(roleCmSQLqCaller);
+        addRole(roleCmSQLqCalled);
+        addRole(roleCmSQLqCaller);
 
-		addRole(roleDbSQLqCalled);
-		addRole(roleDbSQLqCaller);
+        addRole(roleDbSQLqCalled);
+        addRole(roleDbSQLqCaller);
+        this.glue();
+    }
 
-		roleCmSQLqCaller.addObserver(this);
-		roleDbSQLqCaller.addObserver(this);
-	}
+    public void glue() {
+        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleDbSQLqCaller.getName()+ " and "+ roleCmSQLqCalled.getName());
+        roleDbSQLqCaller.addObserver(roleCmSQLqCalled);
+        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleCmSQLqCaller.getName()+ " and "+ roleDbSQLqCalled.getName());
+        roleCmSQLqCaller.addObserver(roleDbSQLqCalled);
+    }
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
-	}
 }

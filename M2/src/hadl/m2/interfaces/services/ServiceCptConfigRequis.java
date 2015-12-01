@@ -22,13 +22,13 @@ public class ServiceCptConfigRequis extends ServiceCptConfig {
 
 	}
 
-//	protected PortCptConfigRequis getInterface(String portName) {
-//		for (PortCptConfigRequis pcr : this.ports) {
-//			if (pcr.getName().toLowerCase().equals(portName.toLowerCase())) {
-//				return pcr;
-//			}
-//		}
-//		return null;
-//
-//	}
+	protected PortCptConfigRequis getPort(String portName) {
+		for (PortCptConfigRequis pcr : this.ports) {
+			if (pcr.getName().toLowerCase().equals(portName.toLowerCase())) {
+				return pcr;
+			}
+		}
+		return null;
+
+	}
 }
