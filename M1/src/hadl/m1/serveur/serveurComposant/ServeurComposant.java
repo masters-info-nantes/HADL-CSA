@@ -33,10 +33,10 @@ public class ServeurComposant extends ComposantConfiguration implements
 
 		if (o instanceof ServiceReceptionRequete) {
 
-            ((ServiceConnectionTo)getInterfaceElement("ServiceConnectionFrom")).sendRequest(arg);
+            ((ServiceConnectionTo)getInterfaceService("ServiceConnectionFrom")).sendRequest(arg);
 
 		} else if (o instanceof ServiceConnectionTo) {
-            ((ServiceEnvoiReponse)getInterfaceElement("ServiceEnvoiReponse")).sendResponse(arg);
+            ((ServiceEnvoiReponse)getInterfaceService("ServiceEnvoiReponse")).sendResponse(arg);
 		}
 
 	}

@@ -6,14 +6,16 @@ import hadl.m2.interfaces.roles.Role;
 public class ConnecteurSimple extends Connecteur {
 
 	public ConnecteurSimple() {
-		interfaceConnecteur = new InterfaceConnecteur();
+        interfaceConnecteur = new InterfaceConnecteur();
 	}
 
-	public ConnecteurSimple(String name) {
-		this.name = name;
-	}
+    public ConnecteurSimple(String name) {
+        interfaceConnecteur = new InterfaceConnecteur();
+        this.name = name;
+    }
 
-	protected void glue() {
+
+    protected void glue() {
 	}
 
     public Role getRole(String rolename) {

@@ -24,7 +24,7 @@ public class Client extends ComposantConfiguration implements Observer {
 		System.out.println("<- | " + this.getClass().getSimpleName()
 				+ "               | Send to Serveur : " + message);
 		ServiceEnvoiRequete service = (ServiceEnvoiRequete) (this
-				.getInterfaceElement("ServiceEnvoiRequete"));
+				.getInterfaceService("ServiceEnvoiRequete"));
 		service.sendRequest(message);
 	}
 

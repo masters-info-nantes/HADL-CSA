@@ -1,5 +1,6 @@
 package hadl.m1.serveur.composants.connectionManager;
 
+import hadl.m1.messages.Message;
 import hadl.m1.messages.Query;
 import hadl.m1.messages.Response;
 import hadl.m2.composant.ComposantConfiguration;
@@ -66,11 +67,11 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
     }
 
     public void sendRequest(Object query){
-        if(((Query)query).getHeader().equals("authentification")){
+        if(((Query)query).getHeader().equals(Message.HeaderType.AUTHENTIFICATION)){
 
             serviceSecurityCheckTo.sendToClearanceRequest(query);
 
-        }else if(((Query)query).getHeader().equals("requeteBDD")){
+        }else if(((Query)query).getHeader().equals(Message.HeaderType.BDDREQUEST)){
 
             serviceDatabaseQueryTo.sendToSqlQuery(query);
 

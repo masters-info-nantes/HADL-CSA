@@ -1,10 +1,10 @@
 package hadl.m2.interfaces;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import hadl.m2.interfaces.ports.PortCptConfig;
 import hadl.m2.interfaces.services.ServiceCptConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InterfaceComposantConfig extends Interface {
 	private String name;
@@ -26,15 +26,35 @@ public class InterfaceComposantConfig extends Interface {
 	}
 
 	public List<ServiceCptConfig> getServices() {
-		return services;
+
+        return services;
 	}
 
 	public List<PortCptConfig> getPorts() {
 		return ports;
 	}
 
+    public PortCptConfig getPort(String name){
+        for (PortCptConfig port : this.ports) {
+            if(port.getName().toLowerCase().equals(name.toLowerCase())) {
+                return port;
+            }
+
+        }
+        return null;
+    }
+
 	public String getName() {
 
 		return name;
 	}
+
+    public ServiceCptConfig getService(String serviceName) {
+        for (ServiceCptConfig service : services) {
+            if(service.getName().toLowerCase().equals(serviceName.toLowerCase())){
+                return service;
+            }
+        }
+        return null;
+    }
 }

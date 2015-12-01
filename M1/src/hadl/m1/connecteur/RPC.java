@@ -10,6 +10,7 @@ public class RPC extends ConnecteurSimple {
 	private RoleServerRpcCaller roleServerRpcCaller;
 
 	public RPC() {
+
 		this.roleClientRpcCalled = new RoleClientRpcCalled(
 				"roleClientRpcCalled");
 		this.roleClientRpcCaller = new RoleClientRpcCaller(
@@ -37,4 +38,19 @@ public class RPC extends ConnecteurSimple {
 
 	}
 
+    public RoleClientRpcCalled getRoleClientRpcCalled() {
+        return roleClientRpcCalled;
+    }
+
+    public RoleClientRpcCaller getRoleClientRpcCaller() {
+        return roleClientRpcCaller;
+    }
+
+    public RoleServerRpcCalled getRoleServerRpcCalled() {
+        return roleServerRpcCalled;
+    }
+
+    public RoleServerRpcCaller getRoleServerRpcCaller() {
+        return roleServerRpcCaller;
+    }
 }

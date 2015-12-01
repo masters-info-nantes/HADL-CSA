@@ -35,14 +35,14 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
             if(arg instanceof Response) {
                 if(((Response) arg).getSuccess().equals(false)){
                     Response response = new Response("Authentification False",false);
-                    ((ServiceSecurityAuthorizationTo)getInterfaceElement("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
+                    ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
                 }else{
-                    ((ServiceSecurityAuthorizationTo)getInterfaceElement("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(arg);
+                    ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(arg);
                 }
 
             }
         }else if (o instanceof ServiceSecurityAuthorizationFrom) {
-            ((ServiceChQueryTo)getInterfaceElement("ServiceChQueryTo")).sendToSecurityQuery(arg);
+            ((ServiceChQueryTo)getInterfaceService("ServiceChQueryTo")).sendToSecurityQuery(arg);
         }
 
     }

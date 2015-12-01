@@ -1,7 +1,13 @@
 package hadl.m1.messages;
 
 public abstract class Message {
-	public String content;
+
+    public enum HeaderType {
+       AUTHENTIFICATION,
+       BDDREQUEST
+    }
+
+    public String content;
 
 
 	public String getContent(){

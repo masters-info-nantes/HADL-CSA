@@ -8,19 +8,17 @@ import java.util.List;
 public class ServiceCptConfigFourni extends ServiceCptConfig {
 	protected List<PortCptConfigFourni> ports;
 
-	public ServiceCptConfigFourni() {
-		this.ports = new ArrayList<PortCptConfigFourni>();
-	}
 
 	public ServiceCptConfigFourni(String name) {
 		this.name = name;
+        this.ports = new ArrayList<PortCptConfigFourni>();
 	}
 
 	public void addPort(PortCptConfigFourni pcf) {
 		ports.add(pcf);
 	}
 
-	protected PortCptConfigFourni getPort(String portname) {
+	public PortCptConfigFourni getPort(String portname) {
 		for (PortCptConfigFourni portconf : ports) {
 			if (portconf.getName().toLowerCase().equals(portname.toLowerCase())) {
 				return portconf;

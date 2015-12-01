@@ -55,11 +55,11 @@ public class Database extends ComposantConfiguration implements Observer {
                 if(exist(((Query)arg).getContent())){
 
                     Response reponse = new Response("user exist", true);
-                    ((ServiceSecurityManagementTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
+                    ((ServiceSecurityManagementTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
                 }else{
 
                     Response reponse = new Response("user non exist",false);
-                    ((ServiceSecurityManagementTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
+                    ((ServiceSecurityManagementTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
                 }
             }
 
@@ -78,11 +78,11 @@ public class Database extends ComposantConfiguration implements Observer {
                         }
 
                         Response reponse = new Response(requestResult,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
 
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
-                        ((ServiceQueryDatabaseTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
                     }
 
 
@@ -93,16 +93,16 @@ public class Database extends ComposantConfiguration implements Observer {
                         String res = req[7]+" "+data.get(req[7].toLowerCase());
 
                         Response reponse = new Response(res,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
 
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
-                        ((ServiceQueryDatabaseTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
                     }
 
                 }else {
                     Response reponse = new Response(req[2]+" :is not in the table",false);
-                    ((ServiceQueryDatabaseTo)getInterfaceElement("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                    ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
                 }
             }
         }

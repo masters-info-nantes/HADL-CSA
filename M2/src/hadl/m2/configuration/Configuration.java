@@ -1,11 +1,11 @@
 package hadl.m2.configuration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import hadl.m2.element.Element;
 import hadl.m2.interfaces.InterfaceConfiguration;
 import hadl.m2.interfaces.ports.PortConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Configuration extends Element {
 
@@ -40,4 +40,9 @@ public class Configuration extends Element {
 	public String getName() {
 		return name;
 	}
+
+
+    public List<Element> getListElement() {
+        return ListElement;
+    }
 }

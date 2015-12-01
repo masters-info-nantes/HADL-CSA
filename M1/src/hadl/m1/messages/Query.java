@@ -1,14 +1,14 @@
 package hadl.m1.messages;
 
 public class Query extends Message {
-	String header;
-	
-	public Query(String entete, String contenu){
+    private HeaderType header;
+
+	public Query(HeaderType header , String contenu){
 		this.content = contenu;
-		this.header = entete;
+		this.header = header;
 	}
-	
-	public String getHeader(){
+
+	public HeaderType getHeader(){
 		return header;
 	}
 }

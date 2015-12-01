@@ -9,12 +9,10 @@ public class ServiceCptConfigRequis extends ServiceCptConfig {
 
 	protected List<PortCptConfigRequis> ports;
 
-	public ServiceCptConfigRequis() {
-		this.ports = new ArrayList<PortCptConfigRequis>();
-	}
 
 	public ServiceCptConfigRequis(String name) {
 		this.name = name;
+        this.ports = new ArrayList<PortCptConfigRequis>();
 	}
 
 	public void addPorts(PortCptConfigRequis pcr) {
@@ -22,7 +20,7 @@ public class ServiceCptConfigRequis extends ServiceCptConfig {
 
 	}
 
-	protected PortCptConfigRequis getPort(String portName) {
+	public PortCptConfigRequis getPort(String portName) {
 		for (PortCptConfigRequis pcr : this.ports) {
 			if (pcr.getName().toLowerCase().equals(portName.toLowerCase())) {
 				return pcr;

@@ -21,11 +21,18 @@ public class ComposantConfiguration extends Composant {
 		interfaceComposantConfig.removeService(ic);
 	}
 
-	public InterfaceComposantConfig getInterfaceElement(String intefaceName) {
-		for (InterfaceComposantConfig ifc : interfaceComposantConfig.getServices()) {
-			if (ifc.getName().toLowerCase().equals(intefaceName.toLowerCase()))
-				return ifc;
-		}
-		return null;
-	}
+    public InterfaceComposantConfig getInterfacePort(String portName) {
+      return this.interfaceComposantConfig.getPort(portName);
+    }
+
+    public InterfaceComposantConfig getInterfaceService(String serviceName) {
+        return this.interfaceComposantConfig.getService(serviceName);
+    }
+
+    public void getService() {
+    }
+
+    public String getName() {
+        return name;
+    }
 }
