@@ -9,7 +9,8 @@ public class ServiceReceptionReponse extends ServiceCptConfigRequis implements O
 
 	public ServiceReceptionReponse(String name) {
 		super(name);
-
+        PortReceptionReponse portReceptionReponse = new PortReceptionReponse("PortReceptionReponse");
+        addPorts(portReceptionReponse);
 	}
 
 

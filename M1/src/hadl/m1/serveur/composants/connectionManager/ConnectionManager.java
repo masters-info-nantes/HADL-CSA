@@ -22,20 +22,19 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
     public ConnectionManager(String name) {
         super(name);
 
-        serviceExternalSocketFrom = new ServiceExternalSocketFrom("serviceExternalSocketFromService");
-        serviceExternalSocketTo = new ServiceExternalSocketTo("serviceExternalSocketToService");
+        serviceExternalSocketFrom = new ServiceExternalSocketFrom("serviceExternalSocketFrom");
+        serviceExternalSocketTo = new ServiceExternalSocketTo("serviceExternalSocketTo");
 
-        serviceSecurityCheckFrom = new ServiceSecurityCheckFrom("serviceDatabaseQueryFrom");
-        serviceSecurityCheckTo = new ServiceSecurityCheckTo("serviceDatabaseQueryTo");
+        serviceSecurityCheckFrom = new ServiceSecurityCheckFrom("ServiceSecurityCheckFrom");
+        serviceSecurityCheckTo = new ServiceSecurityCheckTo("ServiceSecurityCheckTo");
 
         serviceDatabaseQueryFrom = new ServiceDatabaseQueryFrom("serviceDatabaseQueryFrom");
         serviceDatabaseQueryTo = new ServiceDatabaseQueryTo("serviceDatabaseQueryTo");
-
         addService(serviceExternalSocketTo);
         addService(serviceExternalSocketFrom);
 
         addService(serviceSecurityCheckFrom);
-        addService(serviceExternalSocketTo);
+        addService(serviceSecurityCheckTo);
 
         addService(serviceDatabaseQueryTo);
         addService(serviceDatabaseQueryFrom);

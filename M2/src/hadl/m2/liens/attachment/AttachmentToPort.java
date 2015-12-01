@@ -12,8 +12,7 @@ public abstract class AttachmentToPort implements Attachment, Observer {
 	public AttachmentToPort(RoleFourni rf, PortCptConfigRequis pfr) {
 		role = rf;
 		port = pfr;
-
-		System.out.println("Attachement link created :" + role.getName()
+        System.out.println("Attachement link created :" + role.getName()
 				+ "-->" + port.getName());
 	}
 

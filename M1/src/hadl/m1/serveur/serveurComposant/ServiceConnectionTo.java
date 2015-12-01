@@ -7,7 +7,7 @@ public class ServiceConnectionTo extends ServiceCptConfigRequis  {
 
 	public ServiceConnectionTo(String name) {
 		super(name);
-        PortCptConfigRequis portServeurConfigRequis = new PortCptConfigRequis("PortServeurConfigRequis");
+        PortCptConfigRequis portServeurConfigRequis = new PortCptConfigRequis("portServeurCptRequis");
         ports.add(portServeurConfigRequis);
 	}
 

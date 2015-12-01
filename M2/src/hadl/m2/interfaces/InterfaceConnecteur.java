@@ -21,10 +21,11 @@ public class InterfaceConnecteur extends Interface {
 		roles.remove(role);
 	}
 
-    public Role getRole(String roleSmSqCalled) {
+    public Role getRole(String roleName) {
 
         for (Role r: roles) {
-            if (roleSmSqCalled.toLowerCase().equals(r.getName().toLowerCase())){
+            if(roleName.toLowerCase().equals(r.getName().toLowerCase())){
+
                 return r;
             }
         }

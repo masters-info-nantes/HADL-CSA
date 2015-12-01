@@ -10,14 +10,11 @@ import hadl.m1.serveur.composants.securityManager.*;
 import hadl.m1.serveur.connecteurs.clearanceRequest.ClearanceRequest;
 import hadl.m1.serveur.connecteurs.securityQuery.SecurityQuery;
 import hadl.m1.serveur.connecteurs.sqlQuery.SQLQuery;
-import hadl.m1.serveur.serveurComposant.PortServeurCptFourni;
-import hadl.m1.serveur.serveurComposant.PortServeurCptRequis;
 import hadl.m1.serveur.serveurComposant.ServeurComposant;
-import hadl.m2.composant.ComposantConfiguration;
+import hadl.m1.serveur.serveurComposant.ServiceConnectionFrom;
+import hadl.m1.serveur.serveurComposant.ServiceConnectionTo;
 import hadl.m2.configuration.Configuration;
 import hadl.m2.element.Element;
-import hadl.m2.interfaces.ports.PortCptConfigFourni;
-import hadl.m2.interfaces.ports.PortCptConfigRequis;
 import hadl.m2.interfaces.roles.RoleFourni;
 import hadl.m2.interfaces.roles.RoleRequis;
 import hadl.m2.liens.binding.BindingLinkFourni;
@@ -32,8 +29,8 @@ public class ServeurConfiguration extends Configuration implements Observer {
     public ServeurConfiguration(String name) {
         super(name);
 
-        PortServeurConfigFourni portServeurConfigFourni= new PortServeurConfigFourni("portConfigFourni");
-        PortServeurConfigRequis portServeurConfigRequis= new PortServeurConfigRequis("portConfigRequis");
+        PortServeurConfigFourni portServeurConfigFourni= new PortServeurConfigFourni("PortServeurConfigFourni");
+        PortServeurConfigRequis portServeurConfigRequis= new PortServeurConfigRequis("PortServeurConfigRequis");
 
         PortServeurFourni portServeurFourni = new PortServeurFourni("portServeurFourni");
         PortServeurRequis portServeurRequis = new PortServeurRequis("portServeurRequis");
@@ -70,6 +67,10 @@ public class ServeurConfiguration extends Configuration implements Observer {
         /**
          * on récupère tous les services pour obtenir les instances des ports
          */
+        //service from serveur composant
+
+        ServiceConnectionFrom serviceConnectionFrom = (ServiceConnectionFrom) serveurComposant.getInterfaceService("ServiceConnectionFrom");
+        ServiceConnectionTo serviceConnectionTo = (ServiceConnectionTo) serveurComposant.getInterfaceService("ServiceConnectionTo");
 
         //services from connexion manager
 
@@ -102,31 +103,32 @@ public class ServeurConfiguration extends Configuration implements Observer {
          * création des attachement
          */
         AttachmentSecurityCheckFrom attachmentSecurityCheckFrom  = new AttachmentSecurityCheckFrom((RoleFourni)clearanceRequest.getRole("rolecmcrcalled"), serviceSecurityCheckFrom.getPort("portsecuritycheckfrom"));
-        AttachmentSecurityCheckTo attachmentSecurityCheckTo = new AttachmentSecurityCheckTo(serviceSecurityCheckTo.getPort("portsecuritycheckto"), (RoleRequis)clearanceRequest.getRole("cmcrcaller"));
+        AttachmentSecurityCheckTo attachmentSecurityCheckTo = new AttachmentSecurityCheckTo(serviceSecurityCheckTo.getPort("PortSecurityCheckTo"), (RoleRequis) clearanceRequest.getRole("roleCmCrcaller"));
 
-        AttachmentChQueryFrom attachmentChQueryFrom = new AttachmentChQueryFrom((RoleFourni) securityQuery.getRole("RoleSmSqCalled"), (PortCptConfigRequis) securityManager.getInterfacePort("PortChQueryFrom"));
-        AttachmentChQueryTo attachmentChQueryTo = new AttachmentChQueryTo((PortCptConfigFourni) securityManager.getInterfacePort("PortChQueryTo"), (RoleRequis) securityQuery.getRole("RoleSmSqCalled"));
+        AttachmentChQueryFrom attachmentChQueryFrom = new AttachmentChQueryFrom((RoleFourni) securityQuery.getRole("RoleSmSqCalled"), serviceChQueryFrom.getPort("PortChQueryFrom"));
+        AttachmentChQueryTo attachmentChQueryTo = new AttachmentChQueryTo(serviceChQueryTo.getPort("PortChQueryTo"), (RoleRequis) securityQuery.getRole("RoleSmSqCaller"));
 
-        AttachmentDatabaseQueryFrom attachmentDatabaseQueryFrom = new AttachmentDatabaseQueryFrom((RoleFourni) sqlQuery.getRole("rolecmsqlqcalled") ,(PortCptConfigRequis)connectionManager.getInterfacePort("portDataBasequeryFrom") );
-        AttachmentDatabaseQueryTo attachmentDatabaseQueryTo = new AttachmentDatabaseQueryTo((PortCptConfigFourni)connectionManager.getInterfacePort("portdatabasequeryto"), (RoleRequis)sqlQuery.getRole("rolecmsqlqcaller"));
+        AttachmentDatabaseQueryFrom attachmentDatabaseQueryFrom = new AttachmentDatabaseQueryFrom((RoleFourni) sqlQuery.getRole("rolecmsqlqcalled") , serviceDatabaseQueryFrom.getPort("portDataBasequeryFrom"));
+        AttachmentDatabaseQueryTo attachmentDatabaseQueryTo = new AttachmentDatabaseQueryTo(serviceDatabaseQueryTo.getPort("portdatabasequeryto"), (RoleRequis)sqlQuery.getRole("rolecmsqlqcaller"));
 
-        AttachmentQueryDatabaseFrom attachmentQueryDatabaseFrom = new AttachmentQueryDatabaseFrom((RoleFourni)sqlQuery.getRole("roledbsqlqcalled"), (PortCptConfigRequis)database.getInterfacePort("portqueryDatabasefrom"));
-        AttachmentQueryDatabaseTo attachmentQueryDatabaseTo = new AttachmentQueryDatabaseTo((PortCptConfigFourni)database.getInterfacePort("portqueryDatabaseto"), (RoleRequis)sqlQuery.getRole("roledbsqlqcaller"));
+        AttachmentQueryDatabaseFrom attachmentQueryDatabaseFrom = new AttachmentQueryDatabaseFrom((RoleFourni)sqlQuery.getRole("roledbsqlqcalled"), serviceQueryDatabaseFrom.getPort("portqueryDatabasefrom"));
+        AttachmentQueryDatabaseTo attachmentQueryDatabaseTo = new AttachmentQueryDatabaseTo(serviceQueryDatabaseTo.getPort("portqueryDatabaseto"), (RoleRequis)sqlQuery.getRole("roledbsqlqcaller"));
 
-        AttachmentSecurityAuthorizationFrom  attachmentSecurityAuthorizationFrom = new AttachmentSecurityAuthorizationFrom((RoleFourni)clearanceRequest.getRole("rolesmcrcaller"), (PortCptConfigRequis)securityManager.getInterfacePort("portsecurityauthorizationto"));
-        AttachmentSecurityAuthorizationTo attachmentSecurityAuthorizationTo = new AttachmentSecurityAuthorizationTo((PortCptConfigFourni)securityManager.getInterfacePort("portsecurityauthorizationto"), (RoleRequis)clearanceRequest.getRole("rolesmcrcaller"));
+        AttachmentSecurityAuthorizationFrom  attachmentSecurityAuthorizationFrom = new AttachmentSecurityAuthorizationFrom((RoleFourni)clearanceRequest.getRole("rolesmcrcalled"), serviceSecurityAuthorizationFrom.getPort("portsecurityauthorizationfrom"));
+        AttachmentSecurityAuthorizationTo attachmentSecurityAuthorizationTo = new AttachmentSecurityAuthorizationTo(serviceSecurityAuthorizationTo.getPort("portsecurityauthorizationto"), (RoleRequis)clearanceRequest.getRole("rolesmcrcaller"));
 
-        AttachmentSecurityManagementFrom attachmentSecurityManagementFrom = new AttachmentSecurityManagementFrom((RoleFourni)securityQuery.getRole("roledbsqlcalled"), (PortCptConfigRequis)database.getInterfacePort("portsecuritymanagementfrom"));
-        AttachmentSecurityManagementTo attachmentSecurityManagementTo = new AttachmentSecurityManagementTo((PortCptConfigFourni)database.getInterfacePort("portsecuritymanagementfrom"), (RoleRequis)securityQuery.getRole("roledbsqlcalled"));
+        AttachmentSecurityManagementFrom attachmentSecurityManagementFrom = new AttachmentSecurityManagementFrom((RoleFourni)securityQuery.getRole("roledbsqcalled"), serviceSecurityManagementFrom.getPort("portsecuritymanagementfrom"));
+        AttachmentSecurityManagementTo attachmentSecurityManagementTo = new AttachmentSecurityManagementTo(serviceSecurityManagementTo.getPort("portSecurityManagementTo"), (RoleRequis)securityQuery.getRole("roledbsqcaller"));
 
         /**
          * création des bindings
          */
-        BindToConnectionManager bindToConnectionManager = new BindToConnectionManager((PortServeurFourni) this.getInterface("Portserveurrequis") , (PortExternalSocketTo) connectionManager.getInterfacePort("portexternalsocketfrom"));
-        BindToServeur bindToServeur = new BindToServeur((PortServeurRequis) this.getInterface("portserveurrequis"), (PortExternalSocketFrom)connectionManager.getInterfacePort("PortExternalSocketFrom"));
 
-        BindingLinkFourni bindingLinkFourni = new BindingLinkFourni((PortServeurConfigFourni)this.getInterface("PortServeurconfigFourni"), (PortServeurCptFourni) serveurComposant.getInterfacePort("PortServeurCptFourni"));
-        BindingLinkRequis bindingLinkRequis = new BindingLinkRequis((PortServeurCptRequis) serveurComposant.getInterfacePort("PortServeurCptRequis"), (PortServeurConfigRequis)this.getInterface("PortServeurConfigRequis"));
+        BindToConnectionManager bindToConnectionManager = new BindToConnectionManager((PortServeurFourni) this.getInterface("Portserveurfourni") , (PortExternalSocketTo) serviceExternalSocketTo.getPort("portExternalSocketTo"));
+        BindToServeur bindToServeur = new BindToServeur((PortServeurRequis) this.getInterface("portserveurrequis"), (PortExternalSocketFrom)serviceExternalSocketFrom.getPort("PortExternalSocketFrom"));
+
+        BindingLinkFourni bindingLinkFourni = new BindingLinkFourni((PortServeurConfigFourni)this.getInterface("PortServeurconfigFourni"), serviceConnectionFrom.getPort("PortServeurCptFourni"));
+        BindingLinkRequis bindingLinkRequis = new BindingLinkRequis(serviceConnectionTo.getPort("PortServeurCptRequis"), (PortServeurConfigRequis)this.getInterface("PortServeurConfigRequis"));
     }
 
     @Override
@@ -142,11 +144,11 @@ public class ServeurConfiguration extends Configuration implements Observer {
         }
     }
 
-    public ComposantConfiguration getElement(String name){
+    public Element getElement(String name){
 
         for (Element e : getListElement()) {
-            if (((ComposantConfiguration) e).getName().toLowerCase().equals(name)) {
-                return (ComposantConfiguration) e;
+            if (e.getName().toLowerCase().equals(name.toLowerCase())){
+                return e;
             }
         }
         return null;

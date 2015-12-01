@@ -18,8 +18,8 @@ public class ClientServeurApplication {
 
         Client client = new Client("client");
 
-        ServiceEnvoiRequete serviceEnvoieRequete = (ServiceEnvoiRequete) client.getInterfacePort("ServiceEnvoieRequete");
-        ServiceReceptionReponse serviceReceptionReponse = (ServiceReceptionReponse) client.getInterfacePort("ServiceReceptionReponse");
+        ServiceEnvoiRequete serviceEnvoieRequete = (ServiceEnvoiRequete) client.getInterfaceService("ServiceEnvoiRequete");
+        ServiceReceptionReponse serviceReceptionReponse = (ServiceReceptionReponse) client.getInterfaceService("ServiceReceptionReponse");
 
         RPC rpc = new RPC();
 
@@ -28,7 +28,6 @@ public class ClientServeurApplication {
         /**
          * mise en place des liens  attachment entre le clients et le RPC;
          * */
-
         AttachmentEnvoiRequete attachmentEnvoiRequete = new AttachmentEnvoiRequete(rpc.getRoleClientRpcCaller(), (PortEnvoiRequete) serviceEnvoieRequete.getPort("PortEnvoiRequete"));
         AttachmentReceptionReponse attachmentReceptionReponse = new AttachmentReceptionReponse(rpc.getRoleClientRpcCalled(), (PortReceptionReponse) serviceReceptionReponse.getPort("PortReceptionReponse"));
 
@@ -37,11 +36,13 @@ public class ClientServeurApplication {
          */
 
         // on récupère l'instance du serveurComposant a partir du serveur
-        ServeurComposant serveurComposant = (ServeurComposant) serveurConfiguration.getElement("ComposantConfiguration");
+        ServeurComposant serveurComposant = (ServeurComposant) serveurConfiguration.getElement("serveurComposant");
+
 
         // on récupère les deux instances de ports de serveurComposant;
+
         ServiceEnvoiReponse serviceEnvoiReponse = (ServiceEnvoiReponse) serveurComposant.getInterfaceService("serviceEnvoiReponse");
-        ServiceReceptionRequete serviceReceptionRequete = (ServiceReceptionRequete) serveurComposant.getInterfaceService("serveurComposant");
+        ServiceReceptionRequete serviceReceptionRequete = (ServiceReceptionRequete) serveurComposant.getInterfaceService("ServiceReceptionRequete");
 
         //on récupère les instances de ports des services de serveurComposant;
         PortEnvoiReponse portEnvoiReponse = (PortEnvoiReponse) serviceEnvoiReponse.getPort("PortEnvoiReponse");
