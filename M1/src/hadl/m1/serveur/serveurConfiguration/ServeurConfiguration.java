@@ -11,12 +11,16 @@ import hadl.m1.serveur.composants.securityManager.SecurityManager;
 import hadl.m1.serveur.connecteurs.clearanceRequest.ClearanceRequest;
 import hadl.m1.serveur.connecteurs.securityQuery.SecurityQuery;
 import hadl.m1.serveur.connecteurs.sqlQuery.SQLQuery;
+import hadl.m1.serveur.serveurComposant.PortServeurCptFourni;
+import hadl.m1.serveur.serveurComposant.PortServeurCptRequis;
 import hadl.m1.serveur.serveurComposant.ServeurComposant;
 import hadl.m2.configuration.Configuration;
 import hadl.m2.interfaces.ports.PortCptConfigFourni;
 import hadl.m2.interfaces.ports.PortCptConfigRequis;
 import hadl.m2.interfaces.roles.RoleFourni;
 import hadl.m2.interfaces.roles.RoleRequis;
+import hadl.m2.liens.binding.BindingLinkFourni;
+import hadl.m2.liens.binding.BindingLinkRequis;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -83,7 +87,9 @@ public class ServeurConfiguration extends Configuration implements Observer {
         BindToConnectionManager bindToConnectionManager = new BindToConnectionManager((PortServeurFourni) this.getInterface("Portserveurrequis") , (PortExternalSocketTo) connectionManager.getInterfaceElement("portexternalsocketfrom"));
         BindToServeur bindToServeur = new BindToServeur((PortServeurRequis) this.getInterface("portserveurrequis"), (PortExternalSocketFrom)connectionManager.getInterfaceElement(""));
 
-	}
+        BindingLinkFourni bindingLinkFourni = new BindingLinkFourni((PortServeurConfigFourni)this.getInterface("PortServeurconfigFourni"), (PortServeurCptFourni) serveurComposant.getInterfaceElement("PortServeurCptFourni"));
+        BindingLinkRequis bindingLinkRequis = new BindingLinkRequis((PortServeurCptRequis) serveurComposant.getInterfaceElement("PortServeurCptRequis"), (PortServeurConfigRequis)this.getInterface("PortServeurConfigRequis"));
+    }
 
     @Override
     public void update(Observable o, Object arg) {
