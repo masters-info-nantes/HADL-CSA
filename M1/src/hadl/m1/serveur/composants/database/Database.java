@@ -75,35 +75,39 @@ public class Database extends ComposantConfiguration implements Observer {
 
                         String requestResult= "";
                         for(String key : data.keySet()) {
-                            requestResult +=key+" "+data.get(key)+"\n";
+                            requestResult +="\n"+data.get(key);
                         }
 
                         Response reponse = new Response(requestResult,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
 
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                     }
 
 
                 }else if(req[1].toLowerCase().equals("capital")) {
                     //i.e select capital from capitale where pays = "France" (8) avec ; (9)
                     if((req.length == 8) || (req.length == 9)) {
+                        // on retire les '' et/ou ""
+                        String param = req[7].replace("\'","");
+                        param = param.replace("\"","");
 
-                        String res = req[7]+" "+data.get(req[7].toLowerCase());
+
+                        String res = data.get(param.toLowerCase());
 
                         Response reponse = new Response(res,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
 
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                     }
 
                 }else {
                     Response reponse = new Response(req[2]+" :is not in the table",false);
-                    ((ServiceQueryDatabaseTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSqlQuery(reponse);
+                    ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                 }
             }
         }

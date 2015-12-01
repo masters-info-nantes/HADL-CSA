@@ -53,6 +53,8 @@ public class ClientServeurApplication {
 
         Query queryAuthentification = new Query(Message.HeaderType.AUTHENTIFICATION,"TOTO");
         client.sendRequest(queryAuthentification);
+        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select capital from capital where capital = 'france'");
+        client.sendRequest(querySql);
     }
 
 }
