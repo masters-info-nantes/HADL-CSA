@@ -1,5 +1,6 @@
 package hadl.m1.serveur.composants.securityManager;
 
+import hadl.m1.messages.Response;
 import hadl.m2.composant.ComposantConfiguration;
 
 import java.util.Observable;
@@ -23,12 +24,26 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
         addService(serviceChQueryTo);
         addService(serviceSecurityAuthorizationFrom);
         addService(serviceSecurityAuthorizationTo);
+
+        serviceChQueryFrom.addObserver(this);
+        serviceSecurityAuthorizationFrom.addObserver(this);
     }
     
     @Override
     public void update(Observable o, Object arg) {
+        if(o instanceof ServiceChQueryFrom) {
+            if(arg instanceof Response) {
+                if(((Response) arg).getSuccess().equals(false)){
+                    Response response = new Response("Authentification False",false);
+                    ((ServiceSecurityAuthorizationTo)getInterfaceElement("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
+                }else{
+                    ((ServiceSecurityAuthorizationTo)getInterfaceElement("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(arg);
+                }
 
-
+            }
+        }else if (o instanceof ServiceSecurityAuthorizationFrom) {
+            ((ServiceChQueryTo)getInterfaceElement("ServiceChQueryTo")).sendToSecurityQuery(arg);
+        }
 
     }
 
