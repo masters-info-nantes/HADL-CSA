@@ -8,7 +8,7 @@ public class PortSecurityAuthorizationFrom extends PortCptConfigRequis {
 		super(name);
 	}
 
-	public void sendToSecurityManager(Object arg) {
+	public void receiveFromClearanceRequest(Object arg) {
 		this.setChanged();
 		this.notifyObservers(arg);
 	}

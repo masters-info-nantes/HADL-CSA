@@ -1,9 +1,9 @@
 package hadl.m1.serveur.connecteurs.clearanceRequest;
 
-import hadl.m2.interfaces.roles.RoleFourni;
-
 import java.util.Observable;
 import java.util.Observer;
+
+import hadl.m2.interfaces.roles.RoleFourni;
 
 public class RoleCmCrCalled extends RoleFourni implements Observer {
 
@@ -11,12 +11,12 @@ public class RoleCmCrCalled extends RoleFourni implements Observer {
 		super(name);
 	}
 
+	@Override
 	public void update(Observable o, Object arg) {
-		
-		if (o instanceof RoleSmCrCaller) {
-            setChanged();
-            notifyObservers(arg);
-        }
-	}
 
+		if (o instanceof RoleSmCrCaller) {
+			setChanged();
+			notifyObservers(arg);
+		}
+	}
 }

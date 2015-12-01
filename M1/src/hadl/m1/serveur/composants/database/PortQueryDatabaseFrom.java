@@ -8,7 +8,7 @@ public class PortQueryDatabaseFrom extends PortCptConfigRequis {
 		super(name);
 	}
 
-	public void sendToDatabase(Object arg) {
+	public void receiveFromSqlQuery(Object arg) {
 		this.setChanged();
 		this.notifyObservers(arg);
 	}
