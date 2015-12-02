@@ -29,21 +29,11 @@ public class Client extends ComposantConfiguration implements Observer {
 					.getInterfaceService("ServiceEnvoiRequete"));
 			service.sendRequest(message);
 		} else if(message.getHeader().equals(Message.HeaderType.BDDREQUEST)){
-			String[] stringParts = message.getContent().toLowerCase().split(" ");
-			if(stringParts.length >= 3 && stringParts[0].equals("select") && stringParts[2].equals("from")){
-				if(stringParts.length >= 5 && !stringParts[4].equals("where")){
-					System.out.println("Requête incorrecte : "+ stringParts[4] + " n'est pas reconnu.");
-					return;
-				}
-				System.out.println("<- | " + this.getClass().getSimpleName()
-						+ "               | Send request to Serveur : " + message.getHeader() +" "+message.getContent());
-				ServiceEnvoiRequete service = (ServiceEnvoiRequete) (this
-						.getInterfaceService("ServiceEnvoiRequete"));
-				service.sendRequest(message);
-			}else{
-				System.out.println("Requête incorrecte.");
-				return;
-			}
+			System.out.println("<- | " + this.getClass().getSimpleName()
+					+ "               | Send request to Serveur : " + message.getHeader() +" "+message.getContent());
+			ServiceEnvoiRequete service = (ServiceEnvoiRequete) (this
+					.getInterfaceService("ServiceEnvoiRequete"));
+			service.sendRequest(message);
 		}else{
 			System.out.println("Type de message inconnu.");
 			return;

@@ -71,10 +71,11 @@ public class Database extends ComposantConfiguration implements Observer {
         	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from ConnectionManager");
             if(arg instanceof Query) {
                 String[] req= ((Query) arg).getContent().toLowerCase().split(" ");
+                
                 if(req[1].equals("*")){
 
                     // i.e Select * from data (4) avec ";" (5)
-                    if(req.length==3 || req.length==4){
+                    if((req.length==3 || req.length==4) && req[0].equals("select") && req[2].equals("from")){
                     	if(req[3].equals("data")){
 							String requestResult= "";
 							for(String key : data.keySet()) {
@@ -95,7 +96,7 @@ public class Database extends ComposantConfiguration implements Observer {
 
                 }else if(req[1].toLowerCase().equals("capitale")) {
                     //i.e select capitale from data where pays = "France" (8) avec ; (9)
-                    if(((req.length == 8) || (req.length == 9))) {
+                    if(((req.length == 8) || (req.length == 9)) && req[0].equals("select") && req[2].equals("from") && req[4].equals("where")) {
                     	if(req[3].equals("data")){
 	                        // on retire les '' et/ou ""
 	                        String param = req[7].replace("\'","");
