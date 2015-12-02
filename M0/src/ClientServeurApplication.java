@@ -51,9 +51,9 @@ public class ClientServeurApplication {
         AttachmentEnvoiReponse attachmentEnvoiReponse = new AttachmentEnvoiReponse(portEnvoiReponse, rpc.getRoleServerRpcCaller());
         AttachmentReceptionRequete attachmentReceptionRequete = new AttachmentReceptionRequete(rpc.getRoleServerRpcCalled(),portReceptionRequete);
 
-        Query queryAuthentification = new Query(Message.HeaderType.AUTHENTIFICATION,"TOTO");
+        Query queryAuthentification = new Query(Message.HeaderType.AUTHENTIFICATION,"TOTa");
         client.sendRequest(queryAuthentification);
-        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select capital from capital where capital = 'france'");
+        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select * from captial ");
         client.sendRequest(querySql);
     }
 
