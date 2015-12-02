@@ -17,7 +17,8 @@ public class AttachmentReceptionRequete extends AttachmentToPort {
 	public void update(Observable o, Object arg) {
 
         if (o instanceof RoleServerRpcCalled) {
-				((PortReceptionRequete) this.port).getRequete(arg);
+        	System.out.print(this.getClass().getSimpleName()+" -> ");
+			((PortReceptionRequete) this.port).getRequete(arg);
 		}
 	}
 

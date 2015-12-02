@@ -9,7 +9,7 @@ public class PortExternalSocketTo extends PortCptConfigFourni {
 	}
 
     public void sendToServeur(Object arg) {
-
+    	System.out.print(this.getClass().getSimpleName()+" -> ");
         this.setChanged();
         this.notifyObservers(arg);
     }

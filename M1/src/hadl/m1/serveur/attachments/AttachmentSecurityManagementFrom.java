@@ -20,6 +20,7 @@ public class AttachmentSecurityManagementFrom extends AttachmentToPort {
 	public void update(Observable o, Object arg) {
 
         if (o instanceof RoleDbSqCalled) {
+        	System.out.print(this.getClass().getSimpleName()+" -> ");
 			((PortSecurityManagementFrom) port).receiveFromSecurityQuery(arg);
 		}
 	}

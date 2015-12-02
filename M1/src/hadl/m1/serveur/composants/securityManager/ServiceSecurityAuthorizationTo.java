@@ -12,7 +12,7 @@ public class ServiceSecurityAuthorizationTo extends ServiceCptConfigFourni {
 	}
 
 	public void sendToClearanceRequest(Object arg) {
-
+		System.out.print("	< "+this.getClass().getSimpleName()+" -> ");
         ((PortSecurityAuthorizationTo) getPort("portSecurityAuthorizationTo")).sendToClearanceRequest(arg);
     }
 }

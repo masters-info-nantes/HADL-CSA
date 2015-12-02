@@ -10,6 +10,7 @@ public class PortServeurCptFourni extends PortCptConfigFourni {
 	}
 
     public void sendRequest(Object arg) {
+    	System.out.print(this.getClass().getSimpleName()+" -> ");
         setChanged();
         notifyObservers(arg);
     }

@@ -9,6 +9,7 @@ public class RoleDbSqCaller extends RoleRequis {
 	}
 
 	public void receiveFromDatabase(Object arg) {
+		System.out.println(this.getClass().getSimpleName()+" -> SecurityQuery");
         setChanged();
         notifyObservers(arg);
     }

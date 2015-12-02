@@ -34,19 +34,20 @@ public class SecurityManager extends ComposantConfiguration implements Observer 
 
         if(o instanceof ServiceChQueryFrom) {
             if(arg instanceof Response) {
+            	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from Database");
                 if(((Response) arg).getSuccess().equals(false)){
 
-                    Response response = new Response("Authentification False",false);
+                    Response response = new Response("Authentication failed",false);
                     ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
 
                 }else{
-                    Response response = new Response("Authentification succeed",true);
+                    Response response = new Response("Authentication succeed",true);
                     ((ServiceSecurityAuthorizationTo)getInterfaceService("ServiceSecurityAuthorizationTo")).sendToClearanceRequest(response);
                 }
 
             }
         }else if (o instanceof ServiceSecurityAuthorizationFrom) {
-
+        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from ConnectionManager");
             ((ServiceChQueryTo)getInterfaceService("ServiceChQueryTo")).sendToSecurityQuery(arg);
         }
 

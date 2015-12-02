@@ -19,6 +19,7 @@ public class BindToConnectionManager extends BindingLinkFourni  implements Obser
     public void update(Observable o, Object arg) {
 
         if(o instanceof  PortExternalSocketTo) {
+        	System.out.print(this.getClass().getSimpleName()+" -> ");
             ((PortServeurFourni) portConfigFourni).sendToServeur(arg);
         }
     }

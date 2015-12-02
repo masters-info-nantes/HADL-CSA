@@ -9,6 +9,7 @@ public class RoleDbSQLqCaller extends RoleRequis {
 	}
 
 	public void receiveFromDatabase(Object arg) {
+		System.out.println(this.getClass().getSimpleName()+" -> SQLQuery");
         setChanged();
         notifyObservers(arg);
     }

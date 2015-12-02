@@ -20,6 +20,7 @@ public class AttachmentDatabaseQueryFrom extends AttachmentToPort {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof RoleCmSQLqCalled) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((PortDatabaseQueryFrom) port).receiveFromSqlQuery(arg);
 		}
 	}

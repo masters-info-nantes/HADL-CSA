@@ -19,6 +19,7 @@ public class ServiceSecurityCheckFrom extends ServiceCptConfigRequis implements 
     public void update(Observable o, Object arg) {
 
         if (o instanceof PortSecurityCheckFrom) {
+        	System.out.println(this.getClass().getSimpleName()+" -> ConnectionManager");
             setChanged();
             notifyObservers(arg);
         }

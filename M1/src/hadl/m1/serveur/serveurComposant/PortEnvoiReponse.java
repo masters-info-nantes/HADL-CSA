@@ -10,7 +10,7 @@ public class PortEnvoiReponse extends PortCptConfigFourni {
 
 
     public void sendReponse(Object arg) {
-
+    	System.out.print(this.getClass().getSimpleName()+" -> ");
         setChanged();
         notifyObservers(arg);
     }

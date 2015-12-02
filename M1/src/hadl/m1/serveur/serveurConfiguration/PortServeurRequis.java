@@ -6,11 +6,11 @@ public class PortServeurRequis extends PortConfigRequis {
 
 	public PortServeurRequis(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 
     public void sendToConnexionManager(Object arg) {
+    	System.out.print("	> "+this.getClass().getSimpleName()+" -> ");
         setChanged();
         notifyObservers(arg);
     }

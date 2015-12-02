@@ -20,6 +20,7 @@ public class AttachmentChQueryTo extends AttachmentToRole {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof PortChQueryTo) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((RoleSmSqCaller) role).receiveFromSecurityManager(arg);
 		}
 	}

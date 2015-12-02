@@ -20,6 +20,7 @@ public class AttachmentSecurityAuthorizationFrom extends AttachmentToPort {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof RoleSmCrCalled) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((PortSecurityAuthorizationFrom) port).receiveFromClearanceRequest(arg);
 		}
 	}

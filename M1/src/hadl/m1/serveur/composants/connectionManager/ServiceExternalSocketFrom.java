@@ -19,6 +19,7 @@ public class ServiceExternalSocketFrom extends ServiceCptConfigRequis implements
     public void update(Observable o, Object arg) {
     	
         if( o instanceof PortExternalSocketFrom ) {
+        	System.out.println(this.getClass().getSimpleName()+" -> ConnectionManager");
             setChanged();
             notifyObservers(arg);
         }

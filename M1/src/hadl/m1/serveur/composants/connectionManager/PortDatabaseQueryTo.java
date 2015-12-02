@@ -9,6 +9,7 @@ public class PortDatabaseQueryTo extends PortCptConfigFourni {
 	}
 	
 	public void sendToSqlQuery(Object arg) {
+		System.out.print(this.getClass().getSimpleName()+" -> ");
 		this.setChanged();
 		this.notifyObservers(arg);
     }

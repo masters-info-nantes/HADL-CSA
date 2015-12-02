@@ -19,6 +19,7 @@ public class ServiceSecurityAuthorizationFrom extends ServiceCptConfigRequis imp
     public void update(Observable o, Object arg) {
 
     	if( o instanceof  PortSecurityAuthorizationFrom) {
+    		System.out.println(this.getClass().getSimpleName()+" -> SecurityManager");
             setChanged();
             notifyObservers(arg);
         }

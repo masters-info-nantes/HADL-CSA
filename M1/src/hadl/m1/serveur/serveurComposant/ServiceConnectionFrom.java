@@ -18,6 +18,7 @@ public class ServiceConnectionFrom extends ServiceCptConfigFourni implements Obs
     @Override
     public void update(Observable o, Object arg) {
         if(o instanceof PortCptConfigFourni) {
+        	System.out.println(this.getClass().getSimpleName()+" -> ServeurComposant");
             setChanged();
             notifyObservers(arg);
         }

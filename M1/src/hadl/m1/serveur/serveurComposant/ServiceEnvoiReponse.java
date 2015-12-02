@@ -10,9 +10,8 @@ public class ServiceEnvoiReponse extends ServiceCptConfigFourni {
 		this.ports.add(new PortEnvoiReponse("PortEnvoiReponse"));
 	}
 
-
-
     public void sendResponse(Object arg) {
+    	System.out.print("	< "+this.getClass().getSimpleName()+" -> ");
         ((PortEnvoiReponse) this.getPort("PortEnvoiReponse")).sendReponse(arg);
     }
 }

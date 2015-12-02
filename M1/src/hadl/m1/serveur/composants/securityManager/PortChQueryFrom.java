@@ -9,6 +9,7 @@ public class PortChQueryFrom extends PortCptConfigRequis {
 	}
 
 	public void receiveFromSecurityQuery(Object arg) {
+		System.out.print(this.getClass().getSimpleName()+" -> ");
 		this.setChanged();
 		this.notifyObservers(arg);
 	}

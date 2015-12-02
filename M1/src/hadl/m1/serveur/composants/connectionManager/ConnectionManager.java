@@ -50,19 +50,19 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
 
 
         if (o instanceof ServiceExternalSocketFrom) {
-            System.out.println(this.getClass().getSimpleName() + " : Reception from Serveur");
+            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Serveur");
 
             if(arg instanceof Query){
                 sendRequest(arg);
             }
         } else if (o instanceof ServiceSecurityCheckFrom) {
 
-            System.out.println(this.getClass().getSimpleName() + " : Reception from Security Manager");
+            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Security Manager");
             if(arg instanceof Response){
                 sendResponse(arg);
             }
         } else if (o instanceof ServiceDatabaseQueryFrom) {
-            System.out.println(this.getClass().getSimpleName() + " : Reception from Database");
+            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Database");
             if(arg instanceof Response){
                 sendResponse(arg);
             }
@@ -71,7 +71,7 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
 
     public void sendRequest(Object query){
 
-        if(((Query)query).getHeader().equals(Message.HeaderType.AUTHENTIFICATION)){
+        if(((Query)query).getHeader().equals(Message.HeaderType.AUTHENTICATION)){
 
             serviceSecurityCheckTo.sendToClearanceRequest(query);
 

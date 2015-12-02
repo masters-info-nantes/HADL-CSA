@@ -9,7 +9,7 @@ public class RoleSmSqCaller extends RoleRequis {
 	}
 
 	public void receiveFromSecurityManager(Object arg) {
-
+		System.out.println(this.getClass().getSimpleName()+" -> SecurityQuery");
         setChanged();
         notifyObservers(arg);
     }

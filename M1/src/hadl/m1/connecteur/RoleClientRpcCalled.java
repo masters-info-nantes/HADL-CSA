@@ -13,6 +13,7 @@ public class RoleClientRpcCalled extends RoleFourni {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof RoleServerRpcCaller) {
+			System.out.print("	< "+this.getClass().getSimpleName()+" -> ");
 			this.setChanged();
 			this.notifyObservers(arg);
 		}

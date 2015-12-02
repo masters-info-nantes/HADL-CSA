@@ -20,6 +20,7 @@ public class AttachmentSecurityAuthorizationTo extends AttachmentToRole {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof PortSecurityAuthorizationTo) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((RoleSmCrCaller) role).receiveFromSecurityManager(arg);
 		}
 	}

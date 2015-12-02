@@ -20,6 +20,7 @@ public class AttachmentDatabaseQueryTo extends AttachmentToRole {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof PortDatabaseQueryTo) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((RoleCmSQLqCaller) role).receiveFromConnectionManager(arg);
 		}
 	}

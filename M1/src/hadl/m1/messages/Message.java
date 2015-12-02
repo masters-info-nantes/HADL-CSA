@@ -5,7 +5,7 @@ public abstract class Message {
 
 
     public enum HeaderType {
-       AUTHENTIFICATION,
+       AUTHENTICATION,
        BDDREQUEST
     }
 

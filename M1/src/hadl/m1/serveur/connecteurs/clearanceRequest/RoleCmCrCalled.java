@@ -15,6 +15,7 @@ public class RoleCmCrCalled extends RoleFourni implements Observer {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof RoleSmCrCaller) {
+			System.out.print("	< "+this.getClass().getSimpleName()+" -> ");
 			setChanged();
 			notifyObservers(arg);
 		}

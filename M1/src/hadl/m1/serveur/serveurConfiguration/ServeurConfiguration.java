@@ -136,11 +136,11 @@ public class ServeurConfiguration extends Configuration implements Observer {
     public void update(Observable o, Object arg) {
 
         if(o instanceof PortServeurFourni ) {
-
+        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from ConnectionManager");
             ((PortServeurConfigFourni) getInterface("portServeurConfigFourni")).sendResponse(arg);
 
         }else if(o instanceof PortServeurConfigRequis) {
-
+        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from Client");
             ((PortServeurRequis) getInterface("PortServeurRequis")).sendToConnexionManager(arg);
         }
     }

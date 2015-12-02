@@ -19,9 +19,10 @@ public class ServiceReceptionRequete extends ServiceCptConfigRequis implements O
 
     @Override
     public void update(Observable o, Object arg) {
-           if(o instanceof PortReceptionRequete) {
-               setChanged();
-               notifyObservers(arg);
-           }
+       if(o instanceof PortReceptionRequete) {
+    	   System.out.println(this.getClass().getSimpleName()+" -> ServeurComposant");
+           setChanged();
+           notifyObservers(arg);
+       }
     }
 }

@@ -1,3 +1,4 @@
+package main;
 import hadl.m1.attachments.AttachmentEnvoiRequete;
 import hadl.m1.attachments.AttachmentReceptionReponse;
 import hadl.m1.client.*;
@@ -51,9 +52,9 @@ public class ClientServeurApplication {
         AttachmentEnvoiReponse attachmentEnvoiReponse = new AttachmentEnvoiReponse(portEnvoiReponse, rpc.getRoleServerRpcCaller());
         AttachmentReceptionRequete attachmentReceptionRequete = new AttachmentReceptionRequete(rpc.getRoleServerRpcCalled(),portReceptionRequete);
 
-        Query queryAuthentification = new Query(Message.HeaderType.AUTHENTIFICATION,"TOTa");
+        Query queryAuthentification = new Query(Message.HeaderType.AUTHENTICATION,"TOTa");
         client.sendRequest(queryAuthentification);
-        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select * from captial ");
+        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select capitale from data where pays = 'France'");
         client.sendRequest(querySql);
     }
 

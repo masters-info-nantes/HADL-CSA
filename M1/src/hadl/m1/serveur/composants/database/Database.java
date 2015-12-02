@@ -26,7 +26,8 @@ public class Database extends ComposantConfiguration implements Observer {
 
         data.put("france","Paris");
         data.put("canada","Montréal");
-        data.put("espagne","Barcelone");
+        data.put("espagne","Madrid");
+        data.put("allemagne","Berlin");
 
 
 
@@ -52,61 +53,73 @@ public class Database extends ComposantConfiguration implements Observer {
     public void update(Observable o, Object arg) {
 
         if(o instanceof ServiceSecurityManagementFrom){
+        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from SecurityManager");
             if(arg instanceof Query) {
                 if(exist(((Query)arg).getContent())){
 
-                    Response reponse = new Response("user exist", true);
+                    Response reponse = new Response("user does exist", true);
                     ((ServiceSecurityManagementTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
                 }else{
 
-                    Response reponse = new Response("user non exist",false);
+                    Response reponse = new Response("user does not exist",false);
                     ((ServiceSecurityManagementTo)getInterfaceService("ServiceSecurityManagementTo")).sendToSecurityQuery(reponse);
                 }
             }
 
 
         } else if(o instanceof ServiceQueryDatabaseFrom) {
+        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from ConnectionManager");
             if(arg instanceof Query) {
                 String[] req= ((Query) arg).getContent().toLowerCase().split(" ");
                 if(req[1].equals("*")){
 
-                    // i.e Select * from Capital (4) avec ";" (5)
+                    // i.e Select * from data (4) avec ";" (5)
                     if(req.length==3 || req.length==4){
-
-                        String requestResult= "";
-                        for(String key : data.keySet()) {
-                            requestResult +="\n"+data.get(key);
-                        }
-
-                        Response reponse = new Response(requestResult,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
-
+                    	if(req[3].equals("data")){
+							String requestResult= "";
+							for(String key : data.keySet()) {
+							    requestResult +="\n"+key+" : "+data.get(key);
+							}
+							
+							Response reponse = new Response(requestResult,true);
+							((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
+                    	}else{
+                    		Response reponse = new Response(req[3]+" is not a table",false);
+                    		((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
+                    	}
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
                         ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                     }
 
 
-                }else if(req[1].toLowerCase().equals("capital")) {
-                    //i.e select capital from capitale where pays = "France" (8) avec ; (9)
-                    if((req.length == 8) || (req.length == 9)) {
-                        // on retire les '' et/ou ""
-                        String param = req[7].replace("\'","");
-                        param = param.replace("\"","");
-
-
-                        String res = data.get(param.toLowerCase());
-
-                        Response reponse = new Response(res,true);
-                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
-
+                }else if(req[1].toLowerCase().equals("capitale")) {
+                    //i.e select capitale from data where pays = "France" (8) avec ; (9)
+                    if(((req.length == 8) || (req.length == 9))) {
+                    	if(req[3].equals("data")){
+	                        // on retire les '' et/ou ""
+	                        String param = req[7].replace("\'","");
+	                        param = param.replace("\"","");
+	                        if(data.containsKey(param)){
+		                        String res = data.get(param.toLowerCase());
+		
+		                        Response reponse = new Response(res,true);
+		                        ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
+	                        }else{
+	                        	Response reponse = new Response("Unknown key",false);
+	                            ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
+	                        }
+	                    }else{
+	                		Response reponse = new Response(req[3]+" is not a table",false);
+	                		((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
+	                	}
                     }else{
                         Response reponse = new Response("MalFormed sql query",false);
                         ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                     }
 
                 }else {
-                    Response reponse = new Response(req[2]+" :is not in the table",false);
+                    Response reponse = new Response(req[1]+" is not a key",false);
                     ((ServiceQueryDatabaseTo)getInterfaceService("ServiceQueryDatabaseTo")).sendToSqlQuery(reponse);
                 }
             }

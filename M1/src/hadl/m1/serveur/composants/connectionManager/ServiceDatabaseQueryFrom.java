@@ -19,6 +19,7 @@ public class ServiceDatabaseQueryFrom extends ServiceCptConfigRequis implements 
     public void update(Observable o, Object arg) {
 
         if (o instanceof PortDatabaseQueryFrom) {
+        	System.out.println(this.getClass().getSimpleName()+" -> ConnectionManager");
             setChanged();
             notifyObservers(arg);
         }

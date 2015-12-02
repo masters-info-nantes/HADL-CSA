@@ -12,7 +12,7 @@ public class ServiceExternalSocketTo extends ServiceCptConfigFourni {
 	}
 
     public void sendToServeur(Object arg) {
-
+    	System.out.print("	< "+this.getClass().getSimpleName()+" -> ");
         ((PortExternalSocketTo) getPort("portExternalSocketTo")).sendToServeur(arg);
     }
 }

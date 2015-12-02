@@ -9,7 +9,7 @@ public class RoleSmCrCaller extends RoleRequis{
 	}
 
 	public void receiveFromSecurityManager(Object arg) {
-
+		System.out.println(this.getClass().getSimpleName()+" -> ClearanceRequest");
         setChanged();
         notifyObservers(arg);
     }

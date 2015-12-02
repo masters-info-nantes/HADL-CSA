@@ -9,6 +9,7 @@ public class RoleCmCrCaller extends RoleRequis  {
 	}
 	
 	public void receiveFromConnectionManager(Object arg) {
+		System.out.println(this.getClass().getSimpleName()+" -> ClearanceRequest");
         setChanged();
         notifyObservers(arg);
     }

@@ -9,6 +9,7 @@ public class PortChQueryTo extends PortCptConfigFourni {
 	}
 
 	public void sendToSecurityQuery(Object arg) {
+		System.out.print(this.getClass().getSimpleName()+" -> ");
     	this.setChanged();
     	this.notifyObservers(arg);
     }

@@ -14,7 +14,7 @@ public class ServiceEnvoiRequete extends ServiceCptConfigFourni {
 	public void sendRequest(Object message) {
 		PortEnvoiRequete per = (PortEnvoiRequete) this
 				.getPort("PortEnvoiRequete");
-
+		System.out.print("\nTrace : Client -> "+this.getClass().getSimpleName()+" -> ");
 		per.sendRequest(message);
 	}
 

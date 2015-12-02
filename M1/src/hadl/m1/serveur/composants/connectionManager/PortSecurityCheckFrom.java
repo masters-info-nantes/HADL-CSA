@@ -9,7 +9,7 @@ public class PortSecurityCheckFrom extends PortCptConfigRequis {
 	}
 
     public void receiveFromClearanceRequest(Object arg) {
-
+    	System.out.print(this.getClass().getSimpleName()+" -> ");
     	this.setChanged();
     	this.notifyObservers(arg);
     }

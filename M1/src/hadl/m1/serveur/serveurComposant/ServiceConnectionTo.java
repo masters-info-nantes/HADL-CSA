@@ -12,7 +12,7 @@ public class ServiceConnectionTo extends ServiceCptConfigRequis  {
 
 
     public void sendRequest(Object arg) {
-
+    	System.out.print("	> "+this.getClass().getSimpleName()+" -> ");
         ((PortServeurCptRequis)this.getPort("portServeurCptRequis")).sendRequest(arg);
     }
 

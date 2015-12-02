@@ -19,6 +19,7 @@ public class ServiceChQueryFrom extends ServiceCptConfigRequis implements Observ
 	public void update(Observable o, Object arg) {
 
 		if( o instanceof PortChQueryFrom) {
+			System.out.println(this.getClass().getSimpleName()+" -> SecurityManager");
             setChanged();
             notifyObservers(arg);
         }

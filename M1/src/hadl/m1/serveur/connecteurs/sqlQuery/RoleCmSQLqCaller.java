@@ -9,6 +9,7 @@ public class RoleCmSQLqCaller extends RoleRequis {
 	}
 
 	public void receiveFromConnectionManager(Object arg) {
+		System.out.println(this.getClass().getSimpleName()+" -> SQLQuery");
         setChanged();
         notifyObservers(arg);
     }

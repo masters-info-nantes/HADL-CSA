@@ -19,9 +19,8 @@ public class AttachmentSecurityCheckTo extends AttachmentToRole {
 	@Override
 	public void update(Observable o, Object arg) {
 
-
         if (o instanceof PortSecurityCheckTo) {
-
+        	System.out.print(this.getClass().getSimpleName()+" -> ");
 			((RoleCmCrCaller) role).receiveFromConnectionManager(arg);
 		}
 	}

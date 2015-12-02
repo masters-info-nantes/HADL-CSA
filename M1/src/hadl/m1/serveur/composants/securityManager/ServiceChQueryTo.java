@@ -12,7 +12,7 @@ public class ServiceChQueryTo extends ServiceCptConfigFourni {
 	}
 
 	public void sendToSecurityQuery(Object arg) {
-
+		System.out.print("	> "+this.getClass().getSimpleName()+" -> ");
         ((PortChQueryTo) getPort("portChQueryTo")).sendToSecurityQuery(arg);
     }
 }

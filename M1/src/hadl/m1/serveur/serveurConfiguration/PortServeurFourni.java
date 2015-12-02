@@ -6,11 +6,11 @@ public class PortServeurFourni extends PortConfigFourni {
 
 	public PortServeurFourni(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 
     public void sendToServeur(Object arg) {
+    	System.out.println(this.getClass().getSimpleName()+" -> Serveur");
         setChanged();
         notifyObservers(arg);
     }

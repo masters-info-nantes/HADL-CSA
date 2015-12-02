@@ -18,6 +18,7 @@ public class ServiceSecurityManagementFrom extends ServiceCptConfigRequis implem
     public void update(Observable o, Object arg) {
 
     	if( o instanceof PortSecurityManagementFrom) {
+    		System.out.println(this.getClass().getSimpleName()+" -> Database");
             setChanged();
             notifyObservers(arg);
         }

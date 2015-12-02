@@ -10,7 +10,7 @@ public class PortServeurCptRequis extends PortCptConfigRequis {
 	}
 
     public void sendRequest(Object arg) {
-
+    	System.out.print(this.getClass().getSimpleName()+" -> ");
         setChanged();
         notifyObservers(arg);
     }

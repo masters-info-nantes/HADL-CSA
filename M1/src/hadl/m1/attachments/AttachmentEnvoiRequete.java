@@ -17,6 +17,7 @@ public class AttachmentEnvoiRequete extends AttachmentToRole {
 	public void update(Observable o, Object arg) {
 		if (o instanceof PortEnvoiRequete) {
 			if (arg instanceof Query) {
+				System.out.print(this.getClass().getSimpleName()+" -> ");
 				((RoleClientRpcCaller) this.role).getRequete(arg);
 			}
 		}

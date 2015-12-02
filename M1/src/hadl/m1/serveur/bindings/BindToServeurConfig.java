@@ -18,6 +18,7 @@ public class BindToServeurConfig extends BindingLinkFourni implements Observer {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof PortServeurConfigFourni) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
             ((PortServeurCptFourni) this.portCptConfigFourni).sendRequest(arg);
 		}
 

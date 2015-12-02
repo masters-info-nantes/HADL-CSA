@@ -8,7 +8,6 @@ public class RoleServerRpcCalled extends RoleFourni {
 
     public RoleServerRpcCalled(String name) {
         super(name);
-        // TODO Auto-generated constructor stub
     }
 
 
@@ -16,6 +15,7 @@ public class RoleServerRpcCalled extends RoleFourni {
     public void update(Observable o, Object arg) {
 
         if (o instanceof RoleClientRpcCaller) {
+        	System.out.print("	> "+this.getClass().getSimpleName()+" -> ");
             this.setChanged();
             this.notifyObservers(arg);
         }

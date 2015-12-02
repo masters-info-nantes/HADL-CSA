@@ -18,7 +18,7 @@ public class ServiceReceptionReponse extends ServiceCptConfigRequis implements O
 
     @Override
     public void update(Observable o, Object arg) {
-
+    	System.out.println(this.getClass().getSimpleName()+" -> Client\n");
         setChanged();
         notifyObservers(arg);
     }

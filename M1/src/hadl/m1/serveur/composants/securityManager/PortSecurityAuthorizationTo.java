@@ -9,6 +9,7 @@ public class PortSecurityAuthorizationTo extends PortCptConfigFourni {
 	}
 
 	public void sendToClearanceRequest(Object arg) {
+		System.out.print(this.getClass().getSimpleName()+" -> ");
     	this.setChanged();
     	this.notifyObservers(arg);
     }

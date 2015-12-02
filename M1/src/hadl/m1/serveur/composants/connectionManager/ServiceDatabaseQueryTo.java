@@ -12,6 +12,7 @@ public class ServiceDatabaseQueryTo extends ServiceCptConfigFourni {
 	}
 	
 	public void sendToSqlQuery(Object arg) {
+		System.out.print("	> "+this.getClass().getSimpleName()+" -> ");
         ((PortDatabaseQueryTo) getPort("portDatabaseQueryTo")).sendToSqlQuery(arg);
     }
 }

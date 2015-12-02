@@ -19,6 +19,7 @@ public class BindToServeurCpt extends BindingLinkRequis implements Observer {
     public void update(Observable o, Object arg) {
 
         if(o instanceof PortServeurCptRequis) {
+        	System.out.print(this.getClass().getSimpleName()+" -> ");
         	((PortServeurConfigRequis) portConfigRequis).sendRequest(arg);
         }
     }

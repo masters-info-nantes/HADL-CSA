@@ -20,6 +20,7 @@ public class AttachmentSecurityCheckFrom extends AttachmentToPort {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof RoleCmCrCalled) {
+			System.out.print(this.getClass().getSimpleName()+" -> ");
 			((PortSecurityCheckFrom) port).receiveFromClearanceRequest(arg);
 		}
 	}
