@@ -53,7 +53,7 @@ public class Database extends ComposantConfiguration implements Observer {
     public void update(Observable o, Object arg) {
 
         if(o instanceof ServiceSecurityManagementFrom){
-        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from SecurityManager");
+        	System.out.println("\n   "+this.getClass().getSimpleName()+"  : Receive from SecurityManager");
             if(arg instanceof Query) {
                 if(exist(((Query)arg).getContent())){
 
@@ -68,7 +68,7 @@ public class Database extends ComposantConfiguration implements Observer {
 
 
         } else if(o instanceof ServiceQueryDatabaseFrom) {
-        	System.out.println("\n   "+this.getClass().getSimpleName()+" : Receive from ConnectionManager");
+        	System.out.println("\n   "+this.getClass().getSimpleName()+"  : Receive from ConnectionManager");
             if(arg instanceof Query) {
                 String[] req= ((Query) arg).getContent().toLowerCase().split(" ");
                 

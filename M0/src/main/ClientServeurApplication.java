@@ -1,4 +1,5 @@
 package main;
+
 import hadl.m1.attachments.AttachmentEnvoiRequete;
 import hadl.m1.attachments.AttachmentReceptionReponse;
 import hadl.m1.client.*;
@@ -10,10 +11,14 @@ import hadl.m1.serveur.serveurConfiguration.ServeurConfiguration;
 import hadl.m1.serveurComposant.attachments.AttachmentEnvoiReponse;
 import hadl.m1.serveurComposant.attachments.AttachmentReceptionRequete;
 
+import java.util.Scanner;
+
 /**
  * Created by david on 01/12/15.
  */
 public class ClientServeurApplication {
+
+    public static boolean authenfied = false;
 
     public static void main (String [] args) {
 
@@ -52,10 +57,46 @@ public class ClientServeurApplication {
         AttachmentEnvoiReponse attachmentEnvoiReponse = new AttachmentEnvoiReponse(portEnvoiReponse, rpc.getRoleServerRpcCaller());
         AttachmentReceptionRequete attachmentReceptionRequete = new AttachmentReceptionRequete(rpc.getRoleServerRpcCalled(),portReceptionRequete);
 
-        Query queryAuthentification = new Query(Message.HeaderType.AUTHENTICATION,"TOTa");
-        client.sendRequest(queryAuthentification);
-        Query querySql = new Query(Message.HeaderType.BDDREQUEST,"Select capitale from data where pays = 'France'");
-        client.sendRequest(querySql);
+
+
+        boolean  authentified = false;
+        int choice = -1;
+        Scanner in = new Scanner(System.in);
+
+        System.out.println(">>>>>>>>>>>>>>>>> Welcome to Client-Serveur Application <<<<<<<<<<<<<<<<<<< \n");
+
+
+        while (choice != 0) {
+
+            if(! authentified){
+                System.out.println("--- You must authentify yourself to have access to the Database : ---");
+                System.out.println("userName :");
+                String user = in.nextLine();
+
+                System.out.println("\n _________________________________________________________________ \n");
+                System.out.println(" sending an authentification request  with  user : "+user);
+                System.out.println("\n _________________________________________________________________ \n");
+                Query queryAuth = new Query(Message.HeaderType.AUTHENTICATION,user);
+                client.sendRequest(queryAuth);
+                authentified = client.isAuthentified();
+
+            }else {
+                System.out.println("You can now send SQL request to the Database : ");
+                System.out.println("request : ( i.e : Select capitale from data where pays = 'France') ");
+                String sql = in.nextLine();
+
+                System.out.println("\n _________________________________________________________________ \n");
+                System.out.println(" envoie d'une requête de base de données avec un  utilisateur authentifié ");
+                System.out.println("\n _________________________________________________________________ \n");
+
+                Query querySql = new Query(Message.HeaderType.BDDREQUEST,sql);
+                client.sendRequest(querySql);
+
+            }
+
+        }
+
+
     }
 
 }

@@ -12,7 +12,7 @@ public class BindingLinkFourni implements Binding {
 		portConfigFourni = pcfg;
 		portCptConfigFourni = pcpt;
 
-		System.out.println("Binding link created :" + portCptConfigFourni.getName()
-				+ "<-->" + portConfigFourni.getName());
+		System.out.println("Binding link created : " + portCptConfigFourni.getName()
+				+ " <--> " + portConfigFourni.getName());
 	}
 }

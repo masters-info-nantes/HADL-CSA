@@ -12,7 +12,7 @@ public class BindingLinkRequis implements Binding {
 		this.portConfigRequis = portConfigRequis;
 		this.portCptConfigRequis = portCptConfigRequis;
 
-		System.out.println("Binding link created :" + portConfigRequis.getName()
-				+ "<-->" + portCptConfigRequis.getName());
+		System.out.println("Binding link created : " + portConfigRequis.getName()
+				+ " <--> " + portCptConfigRequis.getName());
 	}
 }

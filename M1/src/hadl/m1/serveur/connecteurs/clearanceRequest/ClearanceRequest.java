@@ -30,9 +30,9 @@ public class ClearanceRequest extends ConnecteurSimple  {
 	}
 	
     public void glue () {
-        System.out.println(this.getClass().getSimpleName()+" glue connection between : "+roleCmCrCalled.getName() +" and "+ roleSmCrCaller.getName() );
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  : "+roleCmCrCalled.getName() +" <---> "+ roleSmCrCaller.getName() );
         roleCmCrCaller.addObserver(roleSmCrCalled);
-        System.out.println(this.getClass().getSimpleName()+" glue connection between : "+roleSmCrCalled.getName() +" and "+ roleCmCrCaller.getName());
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  : "+roleSmCrCalled.getName() +" <---> "+ roleCmCrCaller.getName()+"\n" );
         roleSmCrCaller.addObserver(roleCmCrCalled);
     }
 

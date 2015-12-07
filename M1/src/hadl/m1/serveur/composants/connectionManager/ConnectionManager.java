@@ -50,19 +50,19 @@ public class ConnectionManager extends ComposantConfiguration implements Observe
 
 
         if (o instanceof ServiceExternalSocketFrom) {
-            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Serveur");
+            System.out.println("\n   "+this.getClass().getSimpleName() + "  : Receive from Serveur");
 
             if(arg instanceof Query){
                 sendRequest(arg);
             }
         } else if (o instanceof ServiceSecurityCheckFrom) {
 
-            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Security Manager");
+            System.out.println("\n   "+this.getClass().getSimpleName() + "  : Receive from Security Manager");
             if(arg instanceof Response){
                 sendResponse(arg);
             }
         } else if (o instanceof ServiceDatabaseQueryFrom) {
-            System.out.println("\n   "+this.getClass().getSimpleName() + " : Receive from Database");
+            System.out.println("\n   "+this.getClass().getSimpleName() + "  : Receive from Database");
             if(arg instanceof Response){
                 sendResponse(arg);
             }

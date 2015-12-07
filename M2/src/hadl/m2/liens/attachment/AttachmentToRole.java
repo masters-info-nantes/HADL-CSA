@@ -14,7 +14,7 @@ public abstract class AttachmentToRole implements Attachment, Observer {
 		port = pcf;
 		role = rr;
 
-		System.out.println("Attachement link created :" + port.getName()
-				+ "-->" + role.getName());
+		System.out.println("Attachement link created : " + port.getName()
+				+ " --> " + role.getName());
 	}
 }

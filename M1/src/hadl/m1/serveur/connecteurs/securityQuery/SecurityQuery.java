@@ -28,9 +28,9 @@ public class SecurityQuery extends ConnecteurSimple {
 	}
 
     public void glue() {
-        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleSmSqCaller.getName()+ " and "+ roleDbSqCalled.getName());
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  :"+ roleSmSqCaller.getName()+ " <---> "+ roleDbSqCalled.getName());
         roleDbSqCaller.addObserver(roleSmSqCalled);
-        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleDbSqCaller.getName()+ " and "+ roleSmSqCalled.getName());
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  :"+ roleDbSqCaller.getName()+ " <---> "+ roleSmSqCalled.getName()+"\n");
         roleSmSqCaller.addObserver(roleDbSqCalled);
     }
 }

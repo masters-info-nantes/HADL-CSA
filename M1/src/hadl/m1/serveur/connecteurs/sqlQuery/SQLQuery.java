@@ -28,9 +28,9 @@ public class SQLQuery extends ConnecteurSimple {
     }
 
     public void glue() {
-        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleDbSQLqCaller.getName()+ " and "+ roleCmSQLqCalled.getName());
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  :"+ roleDbSQLqCaller.getName()+ " <---> "+ roleCmSQLqCalled.getName());
         roleDbSQLqCaller.addObserver(roleCmSQLqCalled);
-        System.out.println(this.getClass().getSimpleName()+" Glue connection beetween :"+ roleCmSQLqCaller.getName()+ " and "+ roleDbSQLqCalled.getName());
+        System.out.println(this.getClass().getSimpleName()+" glue connecting  :"+ roleCmSQLqCaller.getName()+ " <---> "+ roleDbSQLqCalled.getName()+"\n");
         roleCmSQLqCaller.addObserver(roleDbSQLqCalled);
     }
 

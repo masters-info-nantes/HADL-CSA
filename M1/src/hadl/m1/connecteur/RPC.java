@@ -29,11 +29,11 @@ public class RPC extends ConnecteurSimple {
 
 	public void glue() {
 		System.out
-				.println("\t Rpc glue connecting roleClientRpcCaller <---> roleServerRpcCalled");
+				.println("Rpc glue connecting roleClientRpcCaller <---> roleServerRpcCalled");
 		this.roleClientRpcCaller.addObserver(this.roleServerRpcCalled);
 
 		System.out
-				.println("\t Rpc glue connecting roleServerRpcCaller <----> roleClientRpcCalled");
+				.println("Rpc glue connecting roleServerRpcCaller <---> roleClientRpcCalled \n");
 		this.roleServerRpcCaller.addObserver(this.roleClientRpcCalled);
 
 	}

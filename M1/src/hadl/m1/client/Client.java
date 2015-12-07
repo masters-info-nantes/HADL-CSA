@@ -1,12 +1,15 @@
 package hadl.m1.client;
 
 import hadl.m1.messages.Message;
+import hadl.m1.messages.Response;
 import hadl.m2.composant.ComposantConfiguration;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class Client extends ComposantConfiguration implements Observer {
+
+    private boolean authentified = false;
 
 	public Client(String name) {
 		super(name);
@@ -44,7 +47,14 @@ public class Client extends ComposantConfiguration implements Observer {
 		if (o instanceof ServiceReceptionReponse) {
 			System.out.println("-> | " + this.getClass().getSimpleName()
 					+ "    | Receive a message from the server : " + ((Message)arg).getContent()+"\n\n-------------------------------------\n");
-		}
+
+           authentified = ((Response)arg).getSuccess();
+        }
 	}
 
+
+
+    public boolean isAuthentified() {
+        return authentified;
+    }
 }
