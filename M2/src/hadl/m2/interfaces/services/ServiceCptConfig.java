@@ -1,8 +1,8 @@
 package hadl.m2.interfaces.services;
 
-import hadl.m2.interfaces.InterfaceComposantConfig;
+import java.util.Observable;
 
-public abstract class ServiceCptConfig extends InterfaceComposantConfig {
+public abstract class ServiceCptConfig extends Observable {
 	protected String name;
 
 	public String getName() {

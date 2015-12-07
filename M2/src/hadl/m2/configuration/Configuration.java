@@ -1,11 +1,11 @@
 package hadl.m2.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hadl.m2.element.Element;
 import hadl.m2.interfaces.InterfaceConfiguration;
 import hadl.m2.interfaces.ports.PortConfiguration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Configuration extends Element {
 
@@ -28,21 +28,21 @@ public class Configuration extends Element {
 		interfaceConfiguration.addPort(ic);
 	}
 
-	public InterfaceConfiguration getInterface(String s) {
+	public PortConfiguration getInterface(String s) {
 
-		for (InterfaceConfiguration ic : interfaceConfiguration.getPorts()) {
+		for (PortConfiguration ic : interfaceConfiguration.getPorts()) {
 			if (ic.getName().toLowerCase().equals(s.toLowerCase()))
 				return ic;
 		}
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
-
-    public List<Element> getListElement() {
-        return ListElement;
-    }
+	public List<Element> getListElement() {
+		return ListElement;
+	}
 }

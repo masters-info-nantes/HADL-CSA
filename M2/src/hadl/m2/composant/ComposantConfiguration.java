@@ -1,6 +1,7 @@
 package hadl.m2.composant;
 
 import hadl.m2.interfaces.InterfaceComposantConfig;
+import hadl.m2.interfaces.ports.PortCptConfig;
 import hadl.m2.interfaces.services.ServiceCptConfig;
 
 public class ComposantConfiguration extends Composant {
@@ -21,18 +22,19 @@ public class ComposantConfiguration extends Composant {
 		interfaceComposantConfig.removeService(ic);
 	}
 
-    public InterfaceComposantConfig getInterfacePort(String portName) {
-      return this.interfaceComposantConfig.getPort(portName);
-    }
+	public PortCptConfig getInterfacePort(String portName) {
+		return interfaceComposantConfig.getPort(portName);
+	}
 
-    public InterfaceComposantConfig getInterfaceService(String serviceName) {
-        return this.interfaceComposantConfig.getService(serviceName);
-    }
+	public ServiceCptConfig getInterfaceService(String serviceName) {
+		return interfaceComposantConfig.getService(serviceName);
+	}
 
-    public void getService() {
-    }
+	public void getService() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	@Override
+	public String getName() {
+		return name;
+	}
 }

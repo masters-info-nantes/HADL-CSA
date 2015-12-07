@@ -1,8 +1,8 @@
 package hadl.m2.interfaces.ports;
 
-import hadl.m2.interfaces.InterfaceComposantConfig;
+import java.util.Observable;
 
-public abstract class PortCptConfig extends InterfaceComposantConfig {
+public abstract class PortCptConfig extends Observable {
 	protected String name;
 
 	public String getName() {

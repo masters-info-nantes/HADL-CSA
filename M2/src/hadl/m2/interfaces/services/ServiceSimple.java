@@ -1,7 +1,7 @@
 package hadl.m2.interfaces.services;
 
-import hadl.m2.interfaces.InterfaceComposantSimple;
+import java.util.Observable;
 
-public class ServiceSimple extends InterfaceComposantSimple {
+public class ServiceSimple extends Observable {
 
 }

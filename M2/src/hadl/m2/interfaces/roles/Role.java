@@ -1,8 +1,8 @@
 package hadl.m2.interfaces.roles;
 
-import hadl.m2.interfaces.InterfaceConnecteur;
+import java.util.Observable;
 
-public abstract class Role extends InterfaceConnecteur {
+public abstract class Role extends Observable {
 	protected String name;
 
 	public String getName() {

@@ -1,8 +1,8 @@
 package hadl.m2.interfaces.ports;
 
-import hadl.m2.interfaces.InterfaceComposantSimple;
+import java.util.Observable;
 
-public abstract class PortSimple extends InterfaceComposantSimple {
+public abstract class PortSimple extends Observable {
 	protected String name;
 
 	public String getName() {
