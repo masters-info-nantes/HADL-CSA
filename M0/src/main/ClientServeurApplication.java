@@ -63,7 +63,7 @@ public class ClientServeurApplication {
         int choice = -1;
         Scanner in = new Scanner(System.in);
 
-        System.out.println(">>>>>>>>>>>>>>>>> Welcome to Client-Serveur Application <<<<<<<<<<<<<<<<<<< \n");
+        System.out.println("\n \n >>>>>>>>>>>>>>>>> Welcome to Client-Serveur Application <<<<<<<<<<<<<<<<<<< \n");
 
 
         while (choice != 0) {
@@ -86,7 +86,7 @@ public class ClientServeurApplication {
                 String sql = in.nextLine();
 
                 System.out.println("\n _________________________________________________________________ \n");
-                System.out.println(" envoie d'une requête de base de données avec un  utilisateur authentifié ");
+                System.out.println(" send a SQL request with an authenticated User ");
                 System.out.println("\n _________________________________________________________________ \n");
 
                 Query querySql = new Query(Message.HeaderType.BDDREQUEST,sql);
